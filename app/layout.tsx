@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { StoreProvider } from "./StoreProvider";
 import { Nav } from "./components/Nav";
+import { ChakraProvider } from "@chakra-ui/react";
 
 import "./styles/globals.css";
 import styles from "./styles/layout.module.css";
@@ -15,23 +16,30 @@ export default function RootLayout({ children }: Props) {
     <StoreProvider>
       <html lang="en">
         <body>
-          <section className={styles.container}>
-            <Nav />
+          <section>
+            {/* Left half will reamin fixed with LeftSide Components */}
+            {/* Right half will scroll with RightSide Components */}
+            
+            
+            
+            {/* Inital code Below for reference */}
+            
+            {/* <Nav /> */}
 
-            <header className={styles.header}>
-              <Image
+            <header>
+              {/* <Image
                 src="/logo.svg"
                 className={styles.logo}
                 alt="logo"
                 width={100}
                 height={100}
-              />
+              /> */}
             </header>
 
-            <main className={styles.main}>{children}</main>
-
-            <footer className={styles.footer}>
-              <span>Learn </span>
+              {/* Allows access to the rest of the application */}
+              <main>{children}</main>
+            <footer>
+              {/* <span>Learn </span>
               <a
                 className={styles.link}
                 href="https://reactjs.org"
@@ -75,7 +83,7 @@ export default function RootLayout({ children }: Props) {
                 rel="noopener noreferrer"
               >
                 Reselect
-              </a>
+              </a> */}
             </footer>
           </section>
         </body>
