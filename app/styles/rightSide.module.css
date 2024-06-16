@@ -1,9 +1,14 @@
 .right{
     display: flex;
+    flex-direction: column;
     width: 50%;
     padding: 20px;
     min-height: 1000px;
     overflow-y: scroll;
+    margin-right: 5vw;
+    position: relative;
+    top: 30px;
+    gap: 80px
 }
 
 /* Mobile styles */
@@ -15,4 +20,56 @@
         margin-left: 0;
         height: unset;
     }
+}
+
+.about{
+    font-size: 18px;
+}
+
+.experience {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.job {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.job_dates{
+    min-width: 120px;
+    font-size: 16px;
+}
+
+.job_details{ 
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    font-size: 16px;
+}
+
+.job_title {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    font-size: 16px;
+
+}
+
+.job_skills{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.skill {
+    border-radius: 1em;
+    background: rgba(255, 255, 255, .1);
+    padding: 10px;
+    font-size: 14px;
+    width: fit-content;
+
 }

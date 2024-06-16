@@ -2,7 +2,6 @@
 import styles from '../../styles/leftSide.module.css'
 
 export const Line = ({isHovered}: {isHovered: boolean}) => {
-    console.log(isHovered)
     return (
         <div className={styles.line}
         style={{
