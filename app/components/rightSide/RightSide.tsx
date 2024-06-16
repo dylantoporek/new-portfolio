@@ -1,8 +1,11 @@
 import styles from '../../styles/rightSide.module.css'
+import { About } from './about/About'
+import { Experience } from './experience/Experience'
 export const RightSide = () => {
     return (
         <div className={styles.right}>
-            Right Side
+            <About/>
+            <Experience/>
         </div>
     )
 }
