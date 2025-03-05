@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 50%;
-    padding: 20px;
+    padding: 10px;
     min-height: 1000px;
     overflow-y: scroll;
     margin-right: 5vw;
@@ -34,19 +34,17 @@
 
 .job {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
+    flex-direction: column;
+    gap: 0px;
 }
 
 .job_dates{
     min-width: 120px;
-    font-size: 16px;
 }
 
 .job_details{ 
     display: flex;
     flex-direction: column;
-    gap: 0px;
     font-size: 16px;
 }
 
@@ -54,7 +52,9 @@
     display: flex;
     flex-direction: row;
     gap: 5px;
+    flex-wrap: wrap;
     font-size: 16px;
+    font-weight: bold;
 
 }
 

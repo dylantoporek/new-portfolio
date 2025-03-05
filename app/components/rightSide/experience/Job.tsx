@@ -6,14 +6,21 @@ export const Job = ({job}) => {
     console.log(job)
     return (
         <div className={styles.job}>
-                <p className={styles.job_dates}>{job.dates}</p>
+                
                 <div className={styles.job_details}>
                     <div className={styles.job_title}>
                         <p className={styles.job_title}>{job.jobTitle}</p>
                         <p>•</p>
                         <p>{job.company}</p>
+                        <p className={styles.job_dates}>{job.dates}</p>
                     </div>
-                    <p style={{fontSize: '14px'}}>{job.details}</p>
+                    <div>
+                        {job.details.map((detail: string) => {
+                            return (
+                                <p>{detail}</p>
+                            )
+                        })}
+                    </div>
                     <div className={styles.job_skills}>
                     {job.skills.map((skill: string) => {
                         return (
