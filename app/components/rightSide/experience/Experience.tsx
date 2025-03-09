@@ -1,6 +1,7 @@
 'use client'
 import styles from '../../../styles/rightSide.module.css'
 import { Job } from './Job'
+import {motion} from 'framer-motion'
 export const Experience = () => {
     
 
@@ -223,7 +224,14 @@ export const Experience = () => {
         <div className={styles.experience}>
             {experienceDetails.map((job) => {
                 return (
-                   <Job key={job.id} job={job}/>
+                    <motion.div   
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    >
+                        <Job key={job.id} job={job}/>
+                    </motion.div>
+                   
                 )
             })}
         </div>
