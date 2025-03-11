@@ -65,7 +65,7 @@ const [isMobile, setIsMobile] = useState(false);
         });
 
         if (maxVisible.section) {
-            console.log(maxVisible)
+            // console.log(maxVisible)
             setActiveSection(maxVisible.section)
         }
         };

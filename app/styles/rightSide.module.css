@@ -4,8 +4,8 @@
     width: 60%;
     padding: 20px;
     min-height: 1000px;
-    overflow-y: scroll;
-    margin-right: 5vw;
+    /* overflow-y: scroll; */
+    /* margin-right: 5vw; */
     position: relative;
     top: 30px;
     gap: 80px
@@ -53,8 +53,9 @@
     flex-direction: row;
     gap: 5px;
     flex-wrap: wrap;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
+    cursor: pointer;
 
 }
 

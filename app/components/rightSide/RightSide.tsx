@@ -1,6 +1,7 @@
 import styles from '../../styles/rightSide.module.css'
 import { About } from './about/About'
 import { Experience } from './experience/Experience'
+import { Projects } from './Projects/Projects'
 import { useRef, useEffect } from 'react'
 import {motion} from 'framer-motion'
 
@@ -52,6 +53,7 @@ export const RightSide = () => {
                     transition={{ duration: 0.6 }}>
                     Projects
                 </motion.h2>
+                <Projects/>
             </div>
         </div>
     )
