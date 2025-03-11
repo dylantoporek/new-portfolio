@@ -44,7 +44,7 @@ export const SocialLinks = () => {
               justifyItems:'center',
 
             }}>
-              <a href={link(method)} >
+              <a href={link(method)} style={{display: "table-cell"}} target="_blank">
                 <FontAwesomeIcon
                 onMouseOver={() => setIsHovered(method)}
                 onMouseOut={() => setIsHovered('')}

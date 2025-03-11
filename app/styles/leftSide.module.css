@@ -1,13 +1,13 @@
 .left{
     display: flex;
-    width: 50%;
+    width: 40%;
     padding: 20px;
     position: sticky;
-    top: 80px;
+    top: 30px;
     max-height: 80vh;
     flex-direction: column;
     gap: 50px;
-    margin-left: 5vw;
+    /* margin-left: 5vw; */
 }
 
 /* Mobile styles */
@@ -16,8 +16,8 @@
         display: flex;
         position: relative;
         width: 100%;
-        padding: 20px;
-        flex-direction: column;
+        /* padding: 20px; */
+        flex-direction: row;
     }
 }
 
