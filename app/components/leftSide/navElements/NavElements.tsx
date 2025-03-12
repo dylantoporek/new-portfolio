@@ -23,31 +23,7 @@ const [isMobile, setIsMobile] = useState(false);
 
         return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
     }, []); 
-  // Observe sections in viewport
-//   useEffect(() => {
-//     const observerOptions = { 
-//       root: null, 
-//       rootMargin: "-20% 0px -70% 0px", // Adjusts when the section is detected
-//       threshold: 0.3 // Triggers when 30% of a section is visible
-//     };
-  
-//     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-//       entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//           setActiveSection(entry.target.id);
-//         }
-//       });
-//     };
-  
-//     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    
-//     sections.forEach((section) => {
-//       const element = document.getElementById(section);
-//       if (element) observer.observe(element);
-//     });
-  
-//     return () => observer.disconnect();
-//   }, []);
+
     useEffect(() => {
         const handleScrollEvent = () => {
         let maxVisible = { section: "", visibility: 0 };
@@ -100,7 +76,7 @@ const handleScroll = (section: string) => {
           onClick={() => handleScroll(section)}
           style={{
             cursor: "pointer",
-            color: activeSection === section || target === section ? "yellow" : "#fff", // Highlight active section
+            color: activeSection === section || target === section ? "#00c6ff" : "#fff", // Highlight active section
           }}
         >
           <Line isHovered={hover && target === section} />

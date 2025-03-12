@@ -17,6 +17,14 @@ const [isMobile, setIsMobile] = useState(false);
 
         return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
     }, []); 
+
+    const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth", // Optional: Use "auto" for instant scroll
+        });
+      };
     
     return isMobile ?  (
         <div>
@@ -33,8 +41,11 @@ const [isMobile, setIsMobile] = useState(false);
                 justifyContent: 'space-between',
                 borderBottom: '1px solid white'
             }}>
-                <p style={{
+                <p
+                onClick={scrollToTop} 
+                style={{
                     fontSize: isMobile ? 32 : 48,
+                    cursor: 'pointer'
 
                 }}>Dylan Toporek</p>
                 <SideMenu/>

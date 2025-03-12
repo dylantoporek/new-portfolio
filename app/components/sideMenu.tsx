@@ -29,7 +29,7 @@ const SideMenu = () => {
   // Handle scrolling to section
   const handleScroll = (section: string) => {
     setIsOpen(false);
-    document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById(section)?.scrollIntoView({ behavior: "smooth"});
   };
 
   // Detect active section while scrolling
@@ -110,7 +110,7 @@ const SideMenu = () => {
               key={id}
               onClick={() => handleScroll(id)}
               className={`cursor-pointer text-lg p-2 transition ${
-                activeSection === id ? "text-yellow-400" : "text-white"
+                activeSection === id ? "#FF6F61" : "text-white"
               }`}
               whileHover={{ x: 10, scale: 1.1 }}
             >

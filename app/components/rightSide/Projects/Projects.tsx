@@ -16,7 +16,7 @@ export const Projects = () => {
           {
             title: 'Portfolio Version 1',
             text: 'The previous version of my portfolio site',
-            image: '/botw.jpeg',
+            image: '/logo.jpeg',
             url: 'https://dylantoporek.vercel.app/',
             // frontend: 'https://github.com/dylantoporek/botw-recipe-app',
             // backend: 'https://github.com/dylantoporek/botw-recipe-app-backend',
@@ -43,16 +43,16 @@ export const Projects = () => {
           id: 'poke',
           skills: ['React', 'Ruby on Rails', 'CSS', 'JavaScript']    
         },
-        {
-            title: 'Nintendo-Land',
-            text: 'A board game where you race to the finish against three computer opponents.',
-            image: '/nintendo-land.webp', 
-            frontend: 'https://github.com/dylantoporek/Nintendo-Land',
-            backend: 'https://github.com/dylantoporek/Board-Game-Backend',
-            url: 'https://frozen-eyrie-81829.herokuapp.com/',
-            id: 'board-game',
-            skills: ['React', 'Ruby on Rails', 'CSS', 'Chakra UI', 'JavaScript']
-          },
+        // {
+        //     title: 'Nintendo-Land',
+        //     text: 'A board game where you race to the finish against three computer opponents.',
+        //     image: '/nintendo-land.webp', 
+        //     frontend: 'https://github.com/dylantoporek/Nintendo-Land',
+        //     backend: 'https://github.com/dylantoporek/Board-Game-Backend',
+        //     url: 'https://frozen-eyrie-81829.herokuapp.com/',
+        //     id: 'board-game',
+        //     skills: ['React', 'Ruby on Rails', 'CSS', 'Chakra UI', 'JavaScript']
+        //   },
       ]
     
     return (

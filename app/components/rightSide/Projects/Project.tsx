@@ -31,7 +31,8 @@ export const Project = (project: any) => {
             <div
              style={{
                 width: "100%", // Takes up half the width
-                maxWidth: '380px',
+                maxWidth: '250px',
+                maxHeight: '250px',
                 height: "100%", // Takes up half the parent div height
                 display: "flex",
                 justifyContent: "center",

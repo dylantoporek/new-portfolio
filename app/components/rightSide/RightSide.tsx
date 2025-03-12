@@ -4,6 +4,7 @@ import { Experience } from './experience/Experience'
 import { Projects } from './Projects/Projects'
 import { useRef, useEffect } from 'react'
 import {motion} from 'framer-motion'
+import Wave from '../wave'
 
 
 export const RightSide = () => {
@@ -28,7 +29,13 @@ export const RightSide = () => {
 
     return (
         <div className={styles.right}>
-            <div id='about' ref={aboutRef}>
+            <div 
+                id='about'
+                ref={aboutRef}
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                }}>
                 <motion.h2 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -37,6 +44,7 @@ export const RightSide = () => {
                 </motion.h2>
                 <About/>
             </div>
+            <Wave/>
             <div id='experience' ref={experienceRef}>
                 <motion.h2 
                     initial={{ opacity: 0, y: 20 }}
@@ -46,7 +54,14 @@ export const RightSide = () => {
                 </motion.h2>
                 <Experience/>
             </div>
-            <div id='projects' ref={projectsRef}>
+            <Wave/>
+            <div 
+                id='projects' 
+                ref={projectsRef}
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column'
+                }}>
                 <motion.h2 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
