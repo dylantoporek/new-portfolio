@@ -52,10 +52,38 @@ const [isMobile, setIsMobile] = useState(false);
         return () => window.removeEventListener("scroll", handleScrollEvent);
     }, []);
 
+// const handleScroll = (section: string) => {
+//     setActiveSection(section);
+//     window.dispatchEvent(new CustomEvent("scrollToSection", { detail: section }));
+//   };
 const handleScroll = (section: string) => {
-    setActiveSection(section);
-    window.dispatchEvent(new CustomEvent("scrollToSection", { detail: section }));
-  };
+  setActiveSection(section);
+
+  if (section === 'about'){
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }
+  // Get the section element
+  const el = document.getElementById(section);
+  if (!el) return;
+
+  // Calculate the position of the element and its height
+  const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+  const elementHeight = el.offsetHeight;
+
+  // Calculate the center of the viewport and the element
+  const windowHeight = window.innerHeight;
+  const centerPosition = elementPosition - (windowHeight / 6.25);
+
+  // Scroll to the section and center it
+  window.scrollTo({
+      top: centerPosition,
+      behavior: "smooth", // Smooth scroll effect
+  });
+
+  // Dispatch the custom event for other listeners
+  // window.dispatchEvent(new CustomEvent("scrollToSection", { detail: section }));
+};
+
 
     return isMobile ? (
         null

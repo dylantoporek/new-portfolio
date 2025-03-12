@@ -29,7 +29,27 @@ const SideMenu = () => {
   // Handle scrolling to section
   const handleScroll = (section: string) => {
     setIsOpen(false);
-    document.getElementById(section)?.scrollIntoView({ behavior: "smooth"});
+  
+    // Get the section element
+    const el = document.getElementById(section);
+    if (!el) return;
+  
+    // Calculate the position of the element and its height
+    const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+    const elementHeight = el.offsetHeight;
+  
+    // Calculate the center of the viewport and the element
+    const windowHeight = window.innerHeight;
+    const centerPosition = elementPosition - (windowHeight / 4) + (elementHeight / 2);
+  
+    // Scroll to the section and center it
+    window.scrollTo({
+        top: centerPosition,
+        behavior: "smooth", // Smooth scroll effect
+    });
+  
+    // Dispatch the custom event for other listeners
+    // window.dispatchEvent(new CustomEvent("scrollToSection", { detail: section }));
   };
 
   // Detect active section while scrolling

@@ -9,6 +9,7 @@ const Wave = () => {
 
   // Mirroring the paths (reversing the direction of the wave)
   const mirrorWave = (path: any) => {
+    //@ts-ignore
     const mirroredPath = path.replace(/M(\d+),(\d+)/g, (_, x, y) => `M${1440 - x},${y}`);
     return mirroredPath;
   };

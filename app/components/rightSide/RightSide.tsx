@@ -30,13 +30,14 @@ export const RightSide = () => {
     return (
         <div className={styles.right}>
             <div 
-                id='about'
+                // id='about'
                 ref={aboutRef}
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
                 }}>
                 <motion.h2 
+                    id='about'
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}>
@@ -45,8 +46,15 @@ export const RightSide = () => {
                 <About/>
             </div>
             <Wave/>
-            <div id='experience' ref={experienceRef}>
+            <div 
+            // id='experience' 
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+            }}
+            ref={experienceRef}>
                 <motion.h2 
+                    id='experience'
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}>
@@ -55,14 +63,14 @@ export const RightSide = () => {
                 <Experience/>
             </div>
             <Wave/>
-            <div 
-                id='projects' 
+            <div
                 ref={projectsRef}
                 style={{
                     display: 'flex',
                     flexDirection: 'column'
                 }}>
                 <motion.h2 
+                    id='projects' 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}>
