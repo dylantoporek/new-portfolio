@@ -24,9 +24,10 @@ export const Project = (project: any) => {
             display: 'flex',
             flexDirection: isMobile ? 'column-reverse' : 'row',
             alignItems: 'center',
-            gap: 50,
+            gap: isMobile ? 20:50,
             padding: '8px',
-            height: isMobile ? 'unset' : '250px'
+            height: isMobile ? 'unset' : '250px',
+
         }}>
             <div
              style={{
@@ -53,6 +54,9 @@ export const Project = (project: any) => {
             style={{
                 display: 'flex',
                 flexDirection: 'column',
+                justifySelf: 'flex-start',
+                width: '100%',
+                padding: '8px'
             }}>
             <div 
             style={{
