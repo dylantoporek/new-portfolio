@@ -36,8 +36,8 @@ const Wave = () => {
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 216" className="wave">
         <defs>
           <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style={{ stopColor: "#00c6ff", stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: "#0072ff", stopOpacity: 1 }} />
+            <stop offset="0%" style={{ stopColor: "#C5C9A4", stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: "#0D1B2A", stopOpacity: 1 }} />
           </linearGradient>
         </defs>
         <path fill="url(#waveGradient)" fillOpacity="1" d={wavePath}></path>

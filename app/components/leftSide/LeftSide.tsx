@@ -22,13 +22,24 @@ export const LeftSide = () => {
 
   return isMobile ? 
     (
-    <div className='flex flex-col'>
-        <div className='flex flex-row justify-between'>
+    <div>
+        <div 
+        style={{
+            marginBottom: 40
+        }}>
         <Heading/>
-        <NavElements/>
+        {/* <NavElements/> */}
         </div>
-       
-        <SocialLinks/>
+        {/* <div
+        style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+            // backgroundColor: 'red'
+        }}>
+            <SocialLinks/>
+        </div> */}
+        
     </div>
    ) 
    : 

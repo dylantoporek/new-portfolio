@@ -71,22 +71,30 @@ const SideMenu = () => {
   }, []);
 
   return (
-    <motion.div>
+    <motion.div
+     style={{
+      marginRight: '30px'
+     }}>
       {/* Hamburger Button */}
       {!isOpen && (
-        <button onClick={toggleMenu} style={{
-        //   position: "fixed",
-          top: 30,
-          right: 0,
-          background: 'transparent',
-          border: 'none'
-        }}>
-          <svg width="32" height="32" viewBox="0 0 24 24" stroke="white" strokeWidth="2" strokeLinecap="round">
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="18" x2="21" y2="18" />
-          </svg>
-        </button>
+        <motion.div
+          whileHover={{ y: -2, scale: 1.1 }}>
+          <button onClick={toggleMenu} style={{
+          //   position: "fixed",
+            top: 30,
+            right: 0,
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer'
+          }}>
+            <svg width="32" height="32" viewBox="0 0 24 24" stroke="white" strokeWidth="2" strokeLinecap="round">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        </motion.div>
+        
       )}
 
       {/* Side Menu */}
@@ -103,26 +111,37 @@ const SideMenu = () => {
           right: 0, // Fix the menu to the right side
           height: '100%',
           padding: '8px',
-          backgroundColor: 'gray', // Adjusted to gray for better visibility
+          backgroundColor: '#C5C9A4', // Adjusted to gray for better visibility
+          color: 'black',
           display: 'flex',
           flexDirection: 'column', 
           gap: 50, // Adjust gap if needed
           minWidth: '150px', // Set a minimum width for the side menu
         }}
       >
-        <button onClick={toggleMenu} 
-          style={{
-            alignSelf: 'end',
-            background: 'transparent',
-            border: 'none',
-            color: 'white'
-        }}>
-          ✕
-        </button>
+        <motion.div
+         whileHover={{ y: -2, scale: 1.1 }}
+         style={{
+           alignSelf: 'end',
+           marginTop: '10px',
+         }}>
+          <button onClick={toggleMenu} 
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'black',
+              cursor: 'pointer',
+              fontSize: '20px'
+          }}>
+            ✕
+          </button>
+        </motion.div>
+        
 
         <nav style={{
             display: 'flex',
             flexDirection: 'column', 
+            alignItems: 'center',
             gap: 30 // Adjust space between links
         }}>
           {navItems.map(({ id, label }) => (
@@ -132,7 +151,10 @@ const SideMenu = () => {
               className={`cursor-pointer text-lg p-2 transition ${
                 activeSection === id ? "#FF6F61" : "text-white"
               }`}
-              whileHover={{ x: 10, scale: 1.1 }}
+              whileHover={{ y: -2, scale: 1.1 }}
+              style={{
+                cursor: 'pointer'
+              }}
             >
               {label}
             </motion.div>

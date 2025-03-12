@@ -5,6 +5,7 @@ import { Projects } from './Projects/Projects'
 import { useRef, useEffect } from 'react'
 import {motion} from 'framer-motion'
 import Wave from '../wave'
+import Divider from '../divider'
 
 
 export const RightSide = () => {

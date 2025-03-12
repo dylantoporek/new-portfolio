@@ -1,8 +1,8 @@
 'use client'
 import styles from '../../../styles/leftSide.module.css'
-import { position } from '@chakra-ui/react'
 import SideMenu from '../../sideMenu'
 import {useState, useEffect} from 'react'
+import { motion} from 'framer-motion'
 export const Heading = () => {
 const [isMobile, setIsMobile] = useState(false);
 
@@ -39,27 +39,34 @@ const [isMobile, setIsMobile] = useState(false);
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                borderBottom: '1px solid white'
+                borderBottom: '1px solid white',
             }}>
-                <p
-                onClick={scrollToTop} 
-                style={{
-                    fontSize: isMobile ? 32 : 48,
-                    cursor: 'pointer'
+                <motion.div
+                whileHover={{ scale: 1.1, y: -2 }}>
+                    <p
+                    onClick={scrollToTop} 
+                    style={{
+                        fontSize: isMobile ? 32 : 48,
+                        cursor: 'pointer',
+                        marginLeft: '30px'
 
-                }}>Dylan Toporek</p>
+                    }}>
+                        Dylan Toporek
+                    </p>
+                </motion.div>
+               
                 <SideMenu/>
             </div>
            
-            <div
+            {/* <div
             style={{
                 position: isMobile ? 'relative' : "unset",
                 marginTop: isMobile ? 150: 0,
-                marginBottom: isMobile ? 0: 0
+                marginBottom: isMobile ? 100: 0
             }}>
                 <h2 className={styles.title}>Full Stack Engineer</h2>
                 <p className={styles.text}>I create precise, captivating, and accessible digital experiences.</p>
-            </div>
+            </div> */}
             
         </div>
     ) : 

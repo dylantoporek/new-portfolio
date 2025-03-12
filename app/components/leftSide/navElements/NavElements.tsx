@@ -72,7 +72,7 @@ const handleScroll = (section: string) => {
 
   // Calculate the center of the viewport and the element
   const windowHeight = window.innerHeight;
-  const centerPosition = elementPosition - (windowHeight / 6.25);
+  const centerPosition = elementPosition - (windowHeight / 5.5);
 
   // Scroll to the section and center it
   window.scrollTo({
@@ -99,12 +99,12 @@ const handleScroll = (section: string) => {
           onMouseLeave={() => {
             setTarget('')
           }}
-          whileHover={{ scale: 1.1, x: 10 }}
+          whileHover={{ scale: 1.1, y: -2 }}
           transition={{ type: "spring", stiffness: 200 }}
           onClick={() => handleScroll(section)}
           style={{
             cursor: "pointer",
-            color: activeSection === section || target === section ? "#00c6ff" : "#fff", // Highlight active section
+            color: activeSection === section || target === section ? "#C5C9A4" : "#fff", // Highlight active section
           }}
         >
           <Line isHovered={hover && target === section} />
