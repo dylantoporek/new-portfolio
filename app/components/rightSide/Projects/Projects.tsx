@@ -31,7 +31,7 @@ export const Projects = () => {
             title: 'Portfolio Version 1',
             text: 'The previous version of my portfolio site',
             image: '/logo.jpeg',
-            url: 'https://dylantoporek.vercel.app/',
+            url: 'https://dylantoporek-portfolio-v1.vercel.app/',
             // frontend: 'https://github.com/dylantoporek/botw-recipe-app',
             // backend: 'https://github.com/dylantoporek/botw-recipe-app-backend',
             id: 'portfolio-v-1',
