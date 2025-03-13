@@ -1,13 +1,31 @@
 import styles from '../../../styles/rightSide.module.css'
 import {motion } from 'framer-motion'
+import { useEffect, useState } from 'react';
 export const About = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        // Function to check screen width
+        const checkScreenSize = () => {
+            setIsMobile(window.innerWidth < 768); // Mobile = <768px
+        };
+ 
+        checkScreenSize(); // Check once on mount
+        window.addEventListener("resize", checkScreenSize); // Listen for window resize
+ 
+        return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
+    }, []); 
     return (
         <motion.div   
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             >
-                <div className={styles.about}>
+                <div 
+                    className={styles.about} 
+                    style={{
+                        fontSize: isMobile ? 16 : 18
+                    }}>
                 <motion.div   
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

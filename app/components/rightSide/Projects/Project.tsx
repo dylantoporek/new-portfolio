@@ -1,6 +1,7 @@
 'use client'
 import {motion} from 'framer-motion'
 import { useState, useEffect } from "react"
+import styles from '../../../styles/rightSide.module.css'
 
 export const Project = (project: any) => {
    console.log(project)
@@ -24,7 +25,7 @@ export const Project = (project: any) => {
             display: 'flex',
             flexDirection: isMobile ? 'column-reverse' : 'row',
             alignItems: 'center',
-            gap: isMobile ? 20:50,
+            gap: isMobile ? 0:50,
             padding: '8px',
             height: isMobile ? 'unset' : '250px',
 
@@ -34,7 +35,7 @@ export const Project = (project: any) => {
                 width: "100%", // Takes up half the width
                 maxWidth: '250px',
                 maxHeight: '250px',
-                height: "100%", // Takes up half the parent div height
+                height: "auto", // Takes up half the parent div height
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -78,7 +79,8 @@ export const Project = (project: any) => {
                     <p
                     style={{
                         margin: 0,
-                        marginBottom: 30
+                        marginBottom: 20,
+                        fontSize: isMobile ? '16px':'18px'
                     }}>
                             {project.project.text}
                     </p>
@@ -87,16 +89,18 @@ export const Project = (project: any) => {
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
+                    fontSize: isMobile ? '16px':'18px'
                 }}>
-                    <p style={{margin: 0}}>Made With</p>
+                    <p style={{margin: 0, fontWeight: '500'}}>Made With:</p>
                     <div
                     style={{
                         display: 'flex',
                         flexDirection: 'row',
-                        gap: 10,
-                        flexWrap: 'wrap'
+                        gap: isMobile ? 5:10,
+                        flexWrap: 'wrap',
+                        minWidth: 0
                     }}>
-                        {project.project.skills.map((skill: string) => <p style={{margin: 0}}>{skill}</p>)}
+                        {project.project.skills.map((skill: string, index: number) =>  <p key={index} className={styles.skill}>{skill}</p>)}
                     </div>
                     
                 </div>

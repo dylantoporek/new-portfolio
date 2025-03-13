@@ -21,13 +21,34 @@ export const Job = ({ job }) => {
  
         return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
     }, []); 
-
+    // .job_title {
+    //     display: flex;
+    //     flex-direction: row;
+    //     gap: 5px;
+    //     flex-wrap: wrap;
+    //     font-weight: bold;
+    //     cursor: pointer;
+    
+    // }
     return (
         <div>
-            <div className={styles.job_details}>
-                <div className={styles.job_title} onClick={toggleSection}>
+            <div 
+                className={styles.job_details}
+                style={{
+                    fontSize: isMobile ? 16:18
+                }}>
+                <div 
+                    onClick={toggleSection}
+                    style={{
+                        display: 'flex',
+                        flexDirection: isMobile ? 'column' : 'row',
+                        gap: '5px',
+                        flexWrap: 'wrap',
+                        fontWeight: 'bold',
+                        cursor: 'pointer'
+                    }}>
                     <p className={styles.job_title}>{job.jobTitle}</p>
-                    <p>•</p>
+                    {isMobile ? null : <p>•</p>}
                     <p>{job.company}</p>
                     <p className={styles.job_dates}>{job.dates}</p>
                 </div>

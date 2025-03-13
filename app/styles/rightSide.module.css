@@ -8,7 +8,7 @@
     /* margin-right: 5vw; */
     position: relative;
     top: 30px;
-    gap: 80px
+    gap: 80px;
 }
 
 /* Mobile styles */
@@ -45,19 +45,17 @@
 .job_details{ 
     display: flex;
     flex-direction: column;
-    font-size: 16px;
 }
 
-.job_title {
+/* .job_title {
     display: flex;
     flex-direction: row;
     gap: 5px;
     flex-wrap: wrap;
-    font-size: 20px;
     font-weight: bold;
     cursor: pointer;
 
-}
+} */
 
 .job_skills{
     display: flex;
