@@ -62,8 +62,8 @@ export const RightSide = () => {
                 </motion.h2>
                 <About/>
             </div>
-            <Wave/>
-            {/* {isMobile ? null : <Wave/>} */}
+            {/* <Wave/> */}
+            {isMobile ? null : <Wave/>}
             
             <div 
             // id='experience' 

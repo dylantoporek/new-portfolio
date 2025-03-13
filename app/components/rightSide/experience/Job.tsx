@@ -2,6 +2,7 @@
 import styles from '../../../styles/rightSide.module.css'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import PlusMinus from '../../plusMinus'
 
 // @ts-ignore
 export const Job = ({ job }) => {
@@ -37,22 +38,35 @@ export const Job = ({ job }) => {
                 style={{
                     fontSize: isMobile ? 16:18
                 }}>
-                <div 
-                    onClick={toggleSection}
+                <div
+                onClick={toggleSection}
+                style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                }}>
+                    <div 
+                        style={{
+                            display: 'flex',
+                            flexDirection: isMobile ? 'column' : 'row',
+                            gap: '5px',
+                            flexWrap: 'wrap',
+                            fontWeight: 'bold',
+                        }}>
+                        <p className={styles.job_title}>{job.jobTitle}</p>
+                        {isMobile ? null : <p>•</p>}
+                        <p>{job.company}</p>
+                        <p className={styles.job_dates}>{job.dates}</p>
+                        
+                    </div>
+                    <div
                     style={{
-                        display: 'flex',
-                        flexDirection: isMobile ? 'column' : 'row',
-                        gap: '5px',
-                        flexWrap: 'wrap',
-                        fontWeight: 'bold',
-                        cursor: 'pointer'
+                        marginRight: 20
                     }}>
-                    <p className={styles.job_title}>{job.jobTitle}</p>
-                    {isMobile ? null : <p>•</p>}
-                    <p>{job.company}</p>
-                    <p className={styles.job_dates}>{job.dates}</p>
+                        <PlusMinus isOpen={openSection}/>
+                    </div>
                 </div>
-
                 <AnimatePresence>
                     {openSection && (
                         <motion.div
