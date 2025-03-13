@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-
+import { SocialLinks } from "./leftSide/socialLinks/SocialLinks";
 const navItems = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
@@ -137,8 +137,15 @@ const SideMenu = () => {
           </button>
         </motion.div>
         
-
-        <nav style={{
+          <div
+          style={{
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: "space-between",
+          }}>
+          <nav style={{
             display: 'flex',
             flexDirection: 'column', 
             alignItems: 'center',
@@ -160,6 +167,9 @@ const SideMenu = () => {
             </motion.div>
           ))}
         </nav>
+        <SocialLinks/>
+          </div>
+        
       </motion.div>
     </motion.div>
   );

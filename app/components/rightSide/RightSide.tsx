@@ -48,6 +48,7 @@ export const RightSide = () => {
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
+                    // marginBottom: isMobile ? 40: 0
                 }}>
                 <motion.h2 
                     id='about'
@@ -62,6 +63,8 @@ export const RightSide = () => {
                 <About/>
             </div>
             <Wave/>
+            {/* {isMobile ? null : <Wave/>} */}
+            
             <div 
             // id='experience' 
             style={{
@@ -81,7 +84,7 @@ export const RightSide = () => {
                 </motion.h2>
                 <Experience/>
             </div>
-            <Wave/>
+            {isMobile ? null : <Wave/>}
             <div
                 ref={projectsRef}
                 style={{

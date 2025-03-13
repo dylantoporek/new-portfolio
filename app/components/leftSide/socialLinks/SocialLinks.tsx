@@ -6,10 +6,23 @@ import {
   faGithub,
   faMedium
 } from '@fortawesome/free-brands-svg-icons'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { motion } from "framer-motion"
 
 export const SocialLinks = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+      // Function to check screen width
+      const checkScreenSize = () => {
+          setIsMobile(window.innerWidth < 768); // Mobile = <768px
+      };
+
+      checkScreenSize(); // Check once on mount
+      window.addEventListener("resize", checkScreenSize); // Listen for window resize
+
+      return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
+  }, []); 
     const [isHovered, setIsHovered] = useState('')
     const contactMethods = ['github', 'linkedin', 'medium']
 
@@ -32,8 +45,25 @@ export const SocialLinks = () => {
           return  "https://medium.com/@dylantoporek"
         }
       }
+      // isHovered === method ? 'white' : "#4B88A2"
+
+      function handleColor(method: string){
+        if (isMobile){
+          if (isHovered === method){
+            return 'black'
+          } else return '#4B88A2'
+        } else if (isHovered === method){
+          return 'white'
+        } else return '#4B88A2'
+      }
     return (
-        <div className={styles.socials}>
+        <div 
+          className={styles.socials}
+          style={{
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            gap: isMobile ? 30: '10%', 
+          }}>
             {contactMethods.map((method) => {
           return (
             <motion.div 
@@ -50,7 +80,7 @@ export const SocialLinks = () => {
                 onMouseOut={() => setIsHovered('')}
                 id={method}
                 icon={iconPicker(method)!} 
-                color={isHovered === method ? 'white' : "#4B88A2"} 
+                color={handleColor(method)} 
                 style={{
                 position: 'relative',
                 width: '25px',
