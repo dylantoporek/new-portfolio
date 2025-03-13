@@ -32,11 +32,11 @@
     gap: 10px;
 }
 
-.job {
+/* .job {
     display: flex;
     flex-direction: column;
     gap: 0px;
-}
+} */
 
 .job_dates{
     min-width: 120px;

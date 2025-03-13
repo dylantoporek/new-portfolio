@@ -141,6 +141,11 @@ export const Experience = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
+                    style={{
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        padding: '8px',
+                        borderRadius: '16px'
+                    }}
                     >
                         <Job key={job.id} job={job}/>
                     </motion.div>

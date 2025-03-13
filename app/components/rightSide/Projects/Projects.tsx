@@ -1,8 +1,22 @@
 'use client'
 import { Project } from "./Project"
 import {motion} from 'framer-motion'
+import { useEffect, useState } from "react"
 
 export const Projects = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+   useEffect(() => {
+       // Function to check screen width
+       const checkScreenSize = () => {
+           setIsMobile(window.innerWidth < 768); // Mobile = <768px
+       };
+
+       checkScreenSize(); // Check once on mount
+       window.addEventListener("resize", checkScreenSize); // Listen for window resize
+
+       return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
+   }, []); 
 
     const projects = [
         {
@@ -60,7 +74,7 @@ export const Projects = () => {
         style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 50
+            gap: isMobile ? 50 : 100
         }}>
             {projects.map((project) => {
                 return ( 

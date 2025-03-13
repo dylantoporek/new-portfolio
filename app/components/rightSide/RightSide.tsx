@@ -41,7 +41,10 @@ export const RightSide = () => {
                     id='about'
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}>
+                    transition={{ duration: 0.6 }}
+                    style={{
+                        marginBottom: '50px'
+                    }}>
                     About
                 </motion.h2>
                 <About/>
@@ -58,7 +61,10 @@ export const RightSide = () => {
                     id='experience'
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}>
+                    transition={{ duration: 0.6 }}
+                    style={{
+                        marginBottom: '50px'
+                    }}>
                     Experience
                 </motion.h2>
                 <Experience/>
@@ -74,7 +80,10 @@ export const RightSide = () => {
                     id='projects' 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}>
+                    transition={{ duration: 0.6 }}
+                    style={{
+                        marginBottom: '50px'
+                    }}>
                     Projects
                 </motion.h2>
                 <Projects/>

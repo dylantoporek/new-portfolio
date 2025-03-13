@@ -1,6 +1,6 @@
 'use client'
 import styles from '../../../styles/rightSide.module.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 // @ts-ignore
@@ -8,9 +8,22 @@ export const Job = ({ job }) => {
     const [openSection, setOpenSection] = useState(false);
 
     const toggleSection = () => setOpenSection(prev => !prev);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        // Function to check screen width
+        const checkScreenSize = () => {
+            setIsMobile(window.innerWidth < 768); // Mobile = <768px
+        };
+ 
+        checkScreenSize(); // Check once on mount
+        window.addEventListener("resize", checkScreenSize); // Listen for window resize
+ 
+        return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
+    }, []); 
 
     return (
-        <div className={styles.job}>
+        <div>
             <div className={styles.job_details}>
                 <div className={styles.job_title} onClick={toggleSection}>
                     <p className={styles.job_title}>{job.jobTitle}</p>

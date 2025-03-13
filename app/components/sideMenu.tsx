@@ -111,7 +111,7 @@ const SideMenu = () => {
           right: 0, // Fix the menu to the right side
           height: '100%',
           padding: '8px',
-          backgroundColor: '#C5C9A4', // Adjusted to gray for better visibility
+          backgroundColor: '#AAB2C6', // Adjusted to gray for better visibility
           color: 'black',
           display: 'flex',
           flexDirection: 'column', 
