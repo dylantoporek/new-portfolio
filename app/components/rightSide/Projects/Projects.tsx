@@ -1,8 +1,22 @@
 'use client'
 import { Project } from "./Project"
 import {motion} from 'framer-motion'
+import { useEffect, useState } from "react"
 
 export const Projects = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+   useEffect(() => {
+       // Function to check screen width
+       const checkScreenSize = () => {
+           setIsMobile(window.innerWidth < 768); // Mobile = <768px
+       };
+
+       checkScreenSize(); // Check once on mount
+       window.addEventListener("resize", checkScreenSize); // Listen for window resize
+
+       return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
+   }, []); 
 
     const projects = [
         {
@@ -16,7 +30,7 @@ export const Projects = () => {
           {
             title: 'Portfolio Version 1',
             text: 'The previous version of my portfolio site',
-            image: '/botw.jpeg',
+            image: '/logo.jpeg',
             url: 'https://dylantoporek.vercel.app/',
             // frontend: 'https://github.com/dylantoporek/botw-recipe-app',
             // backend: 'https://github.com/dylantoporek/botw-recipe-app-backend',
@@ -43,16 +57,16 @@ export const Projects = () => {
           id: 'poke',
           skills: ['React', 'Ruby on Rails', 'CSS', 'JavaScript']    
         },
-        {
-            title: 'Nintendo-Land',
-            text: 'A board game where you race to the finish against three computer opponents.',
-            image: '/nintendo-land.webp', 
-            frontend: 'https://github.com/dylantoporek/Nintendo-Land',
-            backend: 'https://github.com/dylantoporek/Board-Game-Backend',
-            url: 'https://frozen-eyrie-81829.herokuapp.com/',
-            id: 'board-game',
-            skills: ['React', 'Ruby on Rails', 'CSS', 'Chakra UI', 'JavaScript']
-          },
+        // {
+        //     title: 'Nintendo-Land',
+        //     text: 'A board game where you race to the finish against three computer opponents.',
+        //     image: '/nintendo-land.webp', 
+        //     frontend: 'https://github.com/dylantoporek/Nintendo-Land',
+        //     backend: 'https://github.com/dylantoporek/Board-Game-Backend',
+        //     url: 'https://frozen-eyrie-81829.herokuapp.com/',
+        //     id: 'board-game',
+        //     skills: ['React', 'Ruby on Rails', 'CSS', 'Chakra UI', 'JavaScript']
+        //   },
       ]
     
     return (
@@ -60,7 +74,7 @@ export const Projects = () => {
         style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 50
+            gap: isMobile ? 50 : 100
         }}>
             {projects.map((project) => {
                 return ( 

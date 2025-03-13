@@ -23,31 +23,7 @@ const [isMobile, setIsMobile] = useState(false);
 
         return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
     }, []); 
-  // Observe sections in viewport
-//   useEffect(() => {
-//     const observerOptions = { 
-//       root: null, 
-//       rootMargin: "-20% 0px -70% 0px", // Adjusts when the section is detected
-//       threshold: 0.3 // Triggers when 30% of a section is visible
-//     };
-  
-//     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-//       entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//           setActiveSection(entry.target.id);
-//         }
-//       });
-//     };
-  
-//     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    
-//     sections.forEach((section) => {
-//       const element = document.getElementById(section);
-//       if (element) observer.observe(element);
-//     });
-  
-//     return () => observer.disconnect();
-//   }, []);
+
     useEffect(() => {
         const handleScrollEvent = () => {
         let maxVisible = { section: "", visibility: 0 };
@@ -76,10 +52,38 @@ const [isMobile, setIsMobile] = useState(false);
         return () => window.removeEventListener("scroll", handleScrollEvent);
     }, []);
 
+// const handleScroll = (section: string) => {
+//     setActiveSection(section);
+//     window.dispatchEvent(new CustomEvent("scrollToSection", { detail: section }));
+//   };
 const handleScroll = (section: string) => {
-    setActiveSection(section);
-    window.dispatchEvent(new CustomEvent("scrollToSection", { detail: section }));
-  };
+  setActiveSection(section);
+
+  if (section === 'about'){
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }
+  // Get the section element
+  const el = document.getElementById(section);
+  if (!el) return;
+
+  // Calculate the position of the element and its height
+  const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+  const elementHeight = el.offsetHeight;
+
+  // Calculate the center of the viewport and the element
+  const windowHeight = window.innerHeight;
+  const centerPosition = elementPosition - (windowHeight / 5.5);
+
+  // Scroll to the section and center it
+  window.scrollTo({
+      top: centerPosition,
+      behavior: "smooth", // Smooth scroll effect
+  });
+
+  // Dispatch the custom event for other listeners
+  // window.dispatchEvent(new CustomEvent("scrollToSection", { detail: section }));
+};
+
 
     return isMobile ? (
         null
@@ -95,12 +99,12 @@ const handleScroll = (section: string) => {
           onMouseLeave={() => {
             setTarget('')
           }}
-          whileHover={{ scale: 1.1, x: 10 }}
+          whileHover={{ scale: 1.1, y: -2 }}
           transition={{ type: "spring", stiffness: 200 }}
           onClick={() => handleScroll(section)}
           style={{
             cursor: "pointer",
-            color: activeSection === section || target === section ? "yellow" : "#fff", // Highlight active section
+            color: activeSection === section || target === section ? "#AAB2C6" : "#fff", // Highlight active section
           }}
         >
           <Line isHovered={hover && target === section} />
