@@ -84,7 +84,7 @@ const handleScroll = (section: string) => {
           onClick={() => handleScroll(section)}
           style={{
             cursor: "pointer",
-            color: activeSection === section || target === section ? "#AAB2C6" : "#fff", // Highlight active section
+            color: activeSection === section || target === section ? "#FF6F61" : "#fff", // Highlight active section
           }}
         >
           <Line isHovered={hover && target === section} />

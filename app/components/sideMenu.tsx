@@ -152,12 +152,13 @@ const SideMenu = () => {
             <motion.div
               key={id}
               onClick={() => handleScroll(id)}
-              className={`cursor-pointer text-lg p-2 transition ${
-                activeSection === id ? "#FF6F61" : "text-white"
-              }`}
               whileHover={{ y: -2, scale: 1.1 }}
               style={{
-                cursor: 'pointer'
+                cursor: 'pointer',
+                fontSize: '18px',
+                padding: '8px',
+                color: activeSection === id ? '#FF6F61' : 'black',
+                transition: 'color 0.2s ease'
               }}
             >
               {label}

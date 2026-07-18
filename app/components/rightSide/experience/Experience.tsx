@@ -141,11 +141,13 @@ export const Experience = () => {
                     key={job.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.18)' }}
+                    transition={{ duration: 0.6, backgroundColor: { duration: 0.2 } }}
                     style={{
-                        background: 'rgba(255, 255, 255, 0.1)',
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
                         padding: '8px',
-                        borderRadius: '16px'
+                        borderRadius: '16px',
+                        cursor: 'pointer'
                     }}
                     >
                         <Job job={job}/>

@@ -33,9 +33,10 @@ export const Heading = () => {
                 <motion.div
                 whileHover={{ scale: 1.1, y: -2 }}>
                     <p
-                    onClick={scrollToTop} 
+                    onClick={scrollToTop}
                     style={{
                         fontSize: isMobile ? 32 : 48,
+                        fontWeight: 600,
                         cursor: 'pointer',
                         marginLeft: '30px'
 
@@ -51,7 +52,7 @@ export const Heading = () => {
     (
     <div className={styles.heading}>
         <div>
-            <p style={{ fontSize: 48 }}>Dylan Toporek</p>
+            <p style={{ fontSize: 48, fontWeight: 600 }}>Dylan Toporek</p>
         </div>
 
         <div>
