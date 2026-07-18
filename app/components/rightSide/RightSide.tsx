@@ -2,53 +2,19 @@ import styles from '../../styles/rightSide.module.css'
 import { About } from './about/About'
 import { Experience } from './experience/Experience'
 import { Projects } from './Projects/Projects'
-import { useRef, useEffect, useState } from 'react'
 import {motion} from 'framer-motion'
 import Wave from '../wave'
-import Divider from '../divider'
-
+import { useIsMobile } from '../../hooks/useIsMobile'
 
 export const RightSide = () => {
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        // Function to check screen width
-        const checkScreenSize = () => {
-            setIsMobile(window.innerWidth < 768); // Mobile = <768px
-        };
- 
-        checkScreenSize(); // Check once on mount
-        window.addEventListener("resize", checkScreenSize); // Listen for window resize
- 
-        return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
-    }, []);
-    const aboutRef = useRef(null);
-    const experienceRef = useRef(null);
-    const projectsRef = useRef(null);
-    
-    useEffect(() => {
-        const handleScrollEvent = (event: any) => {
-          const refs = { about: aboutRef, experience: experienceRef, projects: projectsRef };
-          //@ts-ignore
-          if (refs[event.detail]?.current) {
-            //@ts-ignore
-            refs[event.detail].current.scrollIntoView({ behavior: "smooth" });
-          }
-        };
-    
-        window.addEventListener("scrollToSection", handleScrollEvent);
-        return () => window.removeEventListener("scrollToSection", handleScrollEvent);
-    }, []);
+    const isMobile = useIsMobile();
 
     return (
         <div className={styles.right}>
-            <div 
-                // id='about'
-                ref={aboutRef}
+            <div
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    // marginBottom: isMobile ? 40: 0
                 }}>
                 <motion.h2 
                     id='about'
@@ -62,16 +28,13 @@ export const RightSide = () => {
                 </motion.h2>
                 <About/>
             </div>
-            {/* <Wave/> */}
             {isMobile ? null : <Wave/>}
-            
-            <div 
-            // id='experience' 
+
+            <div
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-            }}
-            ref={experienceRef}>
+            }}>
                 <motion.h2 
                     id='experience'
                     initial={{ opacity: 0, y: 20 }}
@@ -86,7 +49,6 @@ export const RightSide = () => {
             </div>
             {isMobile ? null : <Wave/>}
             <div
-                ref={projectsRef}
                 style={{
                     display: 'flex',
                     flexDirection: 'column'

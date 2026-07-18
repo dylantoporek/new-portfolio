@@ -1,8 +1,9 @@
 'use client';
 import styles from '../../../styles/leftSide.module.css'
 import { Line } from '../../line/Line'
-import React, {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import {motion} from 'framer-motion'
+import { useIsMobile } from '../../../hooks/useIsMobile'
 
 export const NavElements = () => {
 const [hover, setHover] = useState(false)
@@ -10,19 +11,7 @@ const [target, setTarget] = useState('')
 const [activeSection, setActiveSection] = useState("");
 
 const sections = ["about", "experience", "projects"];
-const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        // Function to check screen width
-        const checkScreenSize = () => {
-            setIsMobile(window.innerWidth < 768); // Mobile = <768px
-        };
-
-        checkScreenSize(); // Check once on mount
-        window.addEventListener("resize", checkScreenSize); // Listen for window resize
-
-        return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
-    }, []); 
+const isMobile = useIsMobile();
 
     useEffect(() => {
         const handleScrollEvent = () => {
@@ -41,7 +30,6 @@ const [isMobile, setIsMobile] = useState(false);
         });
 
         if (maxVisible.section) {
-            // console.log(maxVisible)
             setActiveSection(maxVisible.section)
         }
         };
@@ -52,10 +40,6 @@ const [isMobile, setIsMobile] = useState(false);
         return () => window.removeEventListener("scroll", handleScrollEvent);
     }, []);
 
-// const handleScroll = (section: string) => {
-//     setActiveSection(section);
-//     window.dispatchEvent(new CustomEvent("scrollToSection", { detail: section }));
-//   };
 const handleScroll = (section: string) => {
   setActiveSection(section);
 
@@ -79,11 +63,7 @@ const handleScroll = (section: string) => {
       top: centerPosition,
       behavior: "smooth", // Smooth scroll effect
   });
-
-  // Dispatch the custom event for other listeners
-  // window.dispatchEvent(new CustomEvent("scrollToSection", { detail: section }));
 };
-
 
     return isMobile ? (
         null

@@ -1,10 +1,10 @@
 'use client'
 import styles from '../../../styles/rightSide.module.css'
-import { Job } from './Job'
+import { Job, type JobDetails } from './Job'
 import {motion} from 'framer-motion'
 export const Experience = () => {
 
-    const experienceDetails = [
+    const experienceDetails: JobDetails[] = [
         {
             company: 'SkySlope',
             jobTitle: 'Customer Support Technician',
@@ -137,7 +137,8 @@ export const Experience = () => {
         <div className={styles.experience}>
             {experienceDetails.map((job) => {
                 return (
-                    <motion.div   
+                    <motion.div
+                    key={job.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
@@ -147,9 +148,9 @@ export const Experience = () => {
                         borderRadius: '16px'
                     }}
                     >
-                        <Job key={job.id} job={job}/>
+                        <Job job={job}/>
                     </motion.div>
-                   
+
                 )
             })}
         </div>

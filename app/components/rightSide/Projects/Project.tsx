@@ -1,23 +1,25 @@
 'use client'
 import {motion} from 'framer-motion'
-import { useState, useEffect } from "react"
 import styles from '../../../styles/rightSide.module.css'
+import { useIsMobile } from '../../../hooks/useIsMobile'
 
-export const Project = (project: any) => {
-   console.log(project)
-   const [isMobile, setIsMobile] = useState(false);
+export interface ProjectDetails {
+    title: string;
+    text: string;
+    image: string;
+    url?: string;
+    frontend?: string;
+    backend?: string;
+    id: string;
+    skills: string[];
+}
 
-   useEffect(() => {
-       // Function to check screen width
-       const checkScreenSize = () => {
-           setIsMobile(window.innerWidth < 768); // Mobile = <768px
-       };
+interface Props {
+    project: ProjectDetails;
+}
 
-       checkScreenSize(); // Check once on mount
-       window.addEventListener("resize", checkScreenSize); // Listen for window resize
-
-       return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
-   }, []); 
+export const Project = ({ project }: Props) => {
+   const isMobile = useIsMobile();
 
     return (
         <motion.div
@@ -41,13 +43,13 @@ export const Project = (project: any) => {
                 alignItems: "center",
                 // overflow: "none",
              }}>
-                <a href={project.project.url} style={{display: "table-cell"}} target="_blank">
+                <a href={project.url} style={{display: "table-cell"}} target="_blank">
                     <img
                     style={{
                         width: "100%", // Ensures it fully fills the div horizontally
                         height: "100%", // Ensures it fully fills the div vertically
                         objectFit: "contain" // Ensures no stretching
-                    }} src={project.project.image}/> 
+                    }} src={project.image}/> 
                 </a>
                 
             </div>
@@ -73,7 +75,7 @@ export const Project = (project: any) => {
                         fontSize: '20px',
                         fontWeight: 'bold'
                     }}
-                    >{project.project.title}</p>
+                    >{project.title}</p>
                 </div>
                 <div>
                     <p
@@ -82,7 +84,7 @@ export const Project = (project: any) => {
                         marginBottom: 20,
                         fontSize: isMobile ? '16px':'18px'
                     }}>
-                            {project.project.text}
+                            {project.text}
                     </p>
                 </div>
                 <div
@@ -100,7 +102,7 @@ export const Project = (project: any) => {
                         flexWrap: 'wrap',
                         minWidth: 0
                     }}>
-                        {project.project.skills.map((skill: string, index: number) =>  <p key={index} className={styles.skill}>{skill}</p>)}
+                        {project.skills.map((skill: string, index: number) =>  <p key={index} className={styles.skill}>{skill}</p>)}
                     </div>
                     
                 </div>
