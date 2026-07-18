@@ -22,6 +22,10 @@
     }
 }
 
+.about {
+    line-height: 1.6;
+}
+
 .experience {
     display: flex;
     flex-direction: column;

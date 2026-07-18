@@ -34,24 +34,37 @@ export const Project = ({ project }: Props) => {
         }}>
             <div
              style={{
-                width: "100%", // Takes up half the width
+                width: "100%",
                 maxWidth: '250px',
-                maxHeight: '250px',
-                height: "auto", // Takes up half the parent div height
+                aspectRatio: '1 / 1', // Uniform square frame regardless of source image shape
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                // overflow: "none",
+                padding: '12px',
+                borderRadius: '16px',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                background: 'rgba(255, 255, 255, 0.05)',
+                flexShrink: 0,
              }}>
-                <a href={project.url} style={{display: "table-cell"}} target="_blank">
-                    <img
+                <a
+                    href={project.url}
+                    target="_blank"
                     style={{
-                        width: "100%", // Ensures it fully fills the div horizontally
-                        height: "100%", // Ensures it fully fills the div vertically
-                        objectFit: "contain" // Ensures no stretching
-                    }} src={project.image}/> 
+                        display: 'flex',
+                        width: '100%',
+                        height: '100%',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
+                    <img
+                    alt={project.title}
+                    style={{
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                        objectFit: "contain", // Ensures no stretching or cropping
+                        borderRadius: '8px',
+                    }} src={project.image}/>
                 </a>
-                
             </div>
             <div
             style={{

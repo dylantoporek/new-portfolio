@@ -5,7 +5,7 @@ export const Line = ({isHovered}: {isHovered: boolean}) => {
     return (
         <div className={styles.line}
         style={{
-            background: isHovered ? 'white' : '#4B88A2'
+            background: isHovered ? '#FF6F61' : '#4B88A2'
         }}>
 
         </div>

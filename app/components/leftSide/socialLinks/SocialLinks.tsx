@@ -36,13 +36,10 @@ export const SocialLinks = () => {
       }
 
       function handleColor(method: string){
-        if (isMobile){
-          if (isHovered === method){
-            return 'black'
-          } else return '#4B88A2'
-        } else if (isHovered === method){
-          return 'white'
-        } else return '#4B88A2'
+        if (isHovered === method){
+          return '#FF6F61'
+        }
+        return '#4B88A2'
       }
     return (
         <div 
