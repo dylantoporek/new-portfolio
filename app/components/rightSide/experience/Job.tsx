@@ -1,36 +1,30 @@
 'use client'
 import styles from '../../../styles/rightSide.module.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import PlusMinus from '../../plusMinus'
+import { useIsMobile } from '../../../hooks/useIsMobile'
 
-// @ts-ignore
-export const Job = ({ job }) => {
+export interface JobDetails {
+    company: string;
+    jobTitle: string;
+    details: string[];
+    dates: string;
+    skills: string[];
+    url?: string;
+    id: string;
+}
+
+interface Props {
+    job: JobDetails;
+}
+
+export const Job = ({ job }: Props) => {
     const [openSection, setOpenSection] = useState(false);
 
     const toggleSection = () => setOpenSection(prev => !prev);
-    const [isMobile, setIsMobile] = useState(false);
+    const isMobile = useIsMobile();
 
-    useEffect(() => {
-        // Function to check screen width
-        const checkScreenSize = () => {
-            setIsMobile(window.innerWidth < 768); // Mobile = <768px
-        };
- 
-        checkScreenSize(); // Check once on mount
-        window.addEventListener("resize", checkScreenSize); // Listen for window resize
- 
-        return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
-    }, []); 
-    // .job_title {
-    //     display: flex;
-    //     flex-direction: row;
-    //     gap: 5px;
-    //     flex-wrap: wrap;
-    //     font-weight: bold;
-    //     cursor: pointer;
-    
-    // }
     return (
         <div>
             <div 

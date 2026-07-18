@@ -1,6 +1,10 @@
 import {motion} from 'framer-motion'
-//@ts-ignore
-const PlusMinus = ( {isOpen} ) => {
+
+interface Props {
+    isOpen: boolean;
+}
+
+const PlusMinus = ({ isOpen }: Props) => {
     return (
         <svg
             width="24"

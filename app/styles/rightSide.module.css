@@ -22,40 +22,20 @@
     }
 }
 
-/* .about{
-    font-size: 18px;
-} */
-
 .experience {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-/* .job {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-} */
-
 .job_dates{
     min-width: 120px;
 }
 
-.job_details{ 
+.job_details{
     display: flex;
     flex-direction: column;
 }
-
-/* .job_title {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    flex-wrap: wrap;
-    font-weight: bold;
-    cursor: pointer;
-
-} */
 
 .job_skills{
     display: flex;

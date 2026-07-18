@@ -26,21 +26,10 @@
     flex-direction: column;
 }
 
-.name{
-    font-weight: 300;
-    font-size: 48px;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
 .title{
     font-weight: 300;
     font-size: 20px
 }
-
-/* .text {
-
-} */
 
 .nav_elements{
     display: flex;

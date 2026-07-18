@@ -6,23 +6,12 @@ import {
   faGithub,
   faMedium
 } from '@fortawesome/free-brands-svg-icons'
-import React, {useState, useEffect} from 'react'
+import { useState } from 'react'
 import { motion } from "framer-motion"
+import { useIsMobile } from '../../../hooks/useIsMobile'
 
 export const SocialLinks = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-      // Function to check screen width
-      const checkScreenSize = () => {
-          setIsMobile(window.innerWidth < 768); // Mobile = <768px
-      };
-
-      checkScreenSize(); // Check once on mount
-      window.addEventListener("resize", checkScreenSize); // Listen for window resize
-
-      return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
-  }, []); 
+  const isMobile = useIsMobile();
     const [isHovered, setIsHovered] = useState('')
     const contactMethods = ['github', 'linkedin', 'medium']
 
@@ -45,7 +34,6 @@ export const SocialLinks = () => {
           return  "https://medium.com/@dylantoporek"
         }
       }
-      // isHovered === method ? 'white' : "#4B88A2"
 
       function handleColor(method: string){
         if (isMobile){

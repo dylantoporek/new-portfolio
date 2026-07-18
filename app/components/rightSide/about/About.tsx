@@ -1,20 +1,9 @@
 import styles from '../../../styles/rightSide.module.css'
 import {motion } from 'framer-motion'
-import { useEffect, useState } from 'react';
-export const About = () => {
-    const [isMobile, setIsMobile] = useState(false);
+import { useIsMobile } from '../../../hooks/useIsMobile'
 
-    useEffect(() => {
-        // Function to check screen width
-        const checkScreenSize = () => {
-            setIsMobile(window.innerWidth < 768); // Mobile = <768px
-        };
- 
-        checkScreenSize(); // Check once on mount
-        window.addEventListener("resize", checkScreenSize); // Listen for window resize
- 
-        return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
-    }, []); 
+export const About = () => {
+    const isMobile = useIsMobile();
     return (
         <motion.div   
             initial={{ opacity: 0, y: 20 }}

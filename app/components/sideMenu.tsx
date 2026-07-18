@@ -47,9 +47,6 @@ const SideMenu = () => {
         top: centerPosition,
         behavior: "smooth", // Smooth scroll effect
     });
-  
-    // Dispatch the custom event for other listeners
-    // window.dispatchEvent(new CustomEvent("scrollToSection", { detail: section }));
   };
 
   // Detect active section while scrolling
