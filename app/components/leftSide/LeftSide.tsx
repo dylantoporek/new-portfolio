@@ -6,25 +6,23 @@ import { SocialLinks } from './socialLinks/SocialLinks'
 import { useIsMobile } from '../../hooks/useIsMobile'
 
 export const LeftSide = () => {
-  const isMobile = useIsMobile();
+    const isMobile = useIsMobile()
 
-  return isMobile ?
-    (
-    <div>
-        <div
-        style={{
-            marginBottom: 40
-        }}>
-        <Heading/>
+    return isMobile ? (
+        <div>
+            <div
+                style={{
+                    marginBottom: 40,
+                }}
+            >
+                <Heading />
+            </div>
         </div>
-    </div>
-   )
-   :
-    (
+    ) : (
         <div className={styles.left}>
-           <Heading/>
-           <NavElements/>
-           <SocialLinks/>
+            <Heading />
+            <NavElements />
+            <SocialLinks />
         </div>
     )
 }

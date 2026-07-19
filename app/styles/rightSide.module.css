@@ -1,4 +1,4 @@
-.right{
+.right {
     display: flex;
     flex-direction: column;
     width: 60%;
@@ -32,16 +32,16 @@
     gap: 10px;
 }
 
-.job_dates{
+.job_dates {
     min-width: 120px;
 }
 
-.job_details{
+.job_details {
     display: flex;
     flex-direction: column;
 }
 
-.job_skills{
+.job_skills {
     display: flex;
     flex-direction: row;
     gap: 5px;
@@ -50,9 +50,8 @@
 
 .skill {
     border-radius: 1em;
-    background: rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, 0.1);
     padding: 10px;
     font-size: 14px;
     width: fit-content;
-
 }
