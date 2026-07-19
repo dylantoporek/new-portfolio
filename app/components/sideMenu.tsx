@@ -1,186 +1,206 @@
-"use client";
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { SocialLinks } from "./leftSide/socialLinks/SocialLinks";
+'use client'
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { SocialLinks } from './leftSide/socialLinks/SocialLinks'
 const navItems = [
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
-];
+    { id: 'about', label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+]
 
 const SideMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("about");
+    const [isOpen, setIsOpen] = useState(false)
+    const [activeSection, setActiveSection] = useState('about')
 
-  // Toggle Menu
-  const toggleMenu = () => setIsOpen(!isOpen);
+    // Toggle Menu
+    const toggleMenu = () => setIsOpen(!isOpen)
 
-  // Close menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (isOpen && !(e.target as HTMLElement).closest("#side-menu")) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [isOpen]);
+    // Close menu when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (isOpen && !(e.target as HTMLElement).closest('#side-menu')) {
+                setIsOpen(false)
+            }
+        }
+        document.addEventListener('click', handleClickOutside)
+        return () => document.removeEventListener('click', handleClickOutside)
+    }, [isOpen])
 
-  // Handle scrolling to section
-  const handleScroll = (section: string) => {
-    setIsOpen(false);
-  
-    // Get the section element
-    const el = document.getElementById(section);
-    if (!el) return;
-  
-    // Calculate the position of the element and its height
-    const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-    const elementHeight = el.offsetHeight;
-  
-    // Calculate the center of the viewport and the element
-    const windowHeight = window.innerHeight;
-    const centerPosition = elementPosition - (windowHeight / 4) + (elementHeight / 2);
-  
-    // Scroll to the section and center it
-    window.scrollTo({
-        top: centerPosition,
-        behavior: "smooth", // Smooth scroll effect
-    });
-  };
+    // Handle scrolling to section
+    const handleScroll = (section: string) => {
+        setIsOpen(false)
 
-  // Detect active section while scrolling
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+        // Get the section element
+        const el = document.getElementById(section)
+        if (!el) return
 
-    document.querySelectorAll("section").forEach((section) => observer.observe(section));
+        // Calculate the position of the element and its height
+        const elementPosition =
+            el.getBoundingClientRect().top + window.pageYOffset
+        const elementHeight = el.offsetHeight
 
-    return () => observer.disconnect();
-  }, []);
+        // Calculate the center of the viewport and the element
+        const windowHeight = window.innerHeight
+        const centerPosition =
+            elementPosition - windowHeight / 4 + elementHeight / 2
 
-  return (
-    <motion.div
-     style={{
-      marginRight: '30px'
-     }}>
-      {/* Hamburger Button */}
-      {!isOpen && (
+        // Scroll to the section and center it
+        window.scrollTo({
+            top: centerPosition,
+            behavior: 'smooth', // Smooth scroll effect
+        })
+    }
+
+    // Detect active section while scrolling
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id)
+                    }
+                })
+            },
+            { threshold: 0.5 }
+        )
+
+        document
+            .querySelectorAll('section')
+            .forEach((section) => observer.observe(section))
+
+        return () => observer.disconnect()
+    }, [])
+
+    return (
         <motion.div
-          whileHover={{ y: -2, scale: 1.1 }}>
-          <button
-            onClick={toggleMenu}
-            aria-label="Open navigation menu"
-            aria-expanded={isOpen}
             style={{
-              background: 'transparent',
-              border: 'none',
-              cursor: 'pointer'
-            }}>
-            <svg width="32" height="32" viewBox="0 0 24 24" stroke="white" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
-        </motion.div>
-        
-      )}
+                marginRight: '30px',
+            }}
+        >
+            {/* Hamburger Button */}
+            {!isOpen && (
+                <motion.div whileHover={{ y: -2, scale: 1.1 }}>
+                    <button
+                        onClick={toggleMenu}
+                        aria-label="Open navigation menu"
+                        aria-expanded={isOpen}
+                        style={{
+                            background: 'transparent',
+                            border: 'none',
+                            cursor: 'pointer',
+                        }}
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            aria-hidden="true"
+                        >
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                    </button>
+                </motion.div>
+            )}
 
-      {/* Side Menu */}
-      <motion.div
-        id="side-menu"
-        initial={{ x: "100%" }} // Start the menu off-screen to the right
-        animate={{ x: isOpen ? "0%" : "100%" }} // Slide in when open, slide out when closed
-        transition={{ type: "spring", stiffness: 300, damping: 30 }} // Smooth spring animation
-        style={{
-          transformOrigin: 'right',  // Ensure the animation starts from the right
-          zIndex: 40, // Ensure the side menu stays on top of other content
-          position: 'fixed',
-          top: 0,
-          right: 0, // Fix the menu to the right side
-          height: '100%',
-          padding: '8px',
-          backgroundColor: '#AAB2C6', // Adjusted to gray for better visibility
-          color: 'black',
-          display: 'flex',
-          flexDirection: 'column', 
-          gap: 50, // Adjust gap if needed
-          minWidth: '150px', // Set a minimum width for the side menu
-        }}
-      >
-        <motion.div
-         whileHover={{ y: -2, scale: 1.1 }}
-         style={{
-           alignSelf: 'end',
-           marginTop: '10px',
-         }}>
-          <button
-            onClick={toggleMenu}
-            aria-label="Close navigation menu"
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'black',
-              cursor: 'pointer',
-              fontSize: '20px'
-          }}>
-            ✕
-          </button>
-        </motion.div>
-        
-          <div
-          style={{
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: "space-between",
-          }}>
-          <nav
-          aria-label="Section navigation"
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: 30 // Adjust space between links
-        }}>
-          {navItems.map(({ id, label }) => (
-            <motion.button
-              key={id}
-              type="button"
-              onClick={() => handleScroll(id)}
-              whileHover={{ y: -2, scale: 1.1 }}
-              aria-current={activeSection === id ? 'true' : undefined}
-              style={{
-                cursor: 'pointer',
-                fontSize: '18px',
-                padding: '8px',
-                background: 'none',
-                border: 'none',
-                fontFamily: 'inherit',
-                color: activeSection === id ? '#FF6F61' : 'black',
-                transition: 'color 0.2s ease'
-              }}
+            {/* Side Menu */}
+            <motion.div
+                id="side-menu"
+                initial={{ x: '100%' }} // Start the menu off-screen to the right
+                animate={{ x: isOpen ? '0%' : '100%' }} // Slide in when open, slide out when closed
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }} // Smooth spring animation
+                style={{
+                    transformOrigin: 'right', // Ensure the animation starts from the right
+                    zIndex: 40, // Ensure the side menu stays on top of other content
+                    position: 'fixed',
+                    top: 0,
+                    right: 0, // Fix the menu to the right side
+                    height: '100%',
+                    padding: '8px',
+                    backgroundColor: '#AAB2C6', // Adjusted to gray for better visibility
+                    color: 'black',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 50, // Adjust gap if needed
+                    minWidth: '150px', // Set a minimum width for the side menu
+                }}
             >
-              {label}
-            </motion.button>
-          ))}
-        </nav>
-        <SocialLinks/>
-          </div>
-        
-      </motion.div>
-    </motion.div>
-  );
-};
+                <motion.div
+                    whileHover={{ y: -2, scale: 1.1 }}
+                    style={{
+                        alignSelf: 'end',
+                        marginTop: '10px',
+                    }}
+                >
+                    <button
+                        onClick={toggleMenu}
+                        aria-label="Close navigation menu"
+                        style={{
+                            background: 'transparent',
+                            border: 'none',
+                            color: 'black',
+                            cursor: 'pointer',
+                            fontSize: '20px',
+                        }}
+                    >
+                        ✕
+                    </button>
+                </motion.div>
 
-export default SideMenu;
+                <div
+                    style={{
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                    }}
+                >
+                    <nav
+                        aria-label="Section navigation"
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            gap: 30, // Adjust space between links
+                        }}
+                    >
+                        {navItems.map(({ id, label }) => (
+                            <motion.button
+                                key={id}
+                                type="button"
+                                onClick={() => handleScroll(id)}
+                                whileHover={{ y: -2, scale: 1.1 }}
+                                aria-current={
+                                    activeSection === id ? 'true' : undefined
+                                }
+                                style={{
+                                    cursor: 'pointer',
+                                    fontSize: '18px',
+                                    padding: '8px',
+                                    background: 'none',
+                                    border: 'none',
+                                    fontFamily: 'inherit',
+                                    color:
+                                        activeSection === id
+                                            ? '#FF6F61'
+                                            : 'black',
+                                    transition: 'color 0.2s ease',
+                                }}
+                            >
+                                {label}
+                            </motion.button>
+                        ))}
+                    </nav>
+                    <SocialLinks />
+                </div>
+            </motion.div>
+        </motion.div>
+    )
+}
+
+export default SideMenu

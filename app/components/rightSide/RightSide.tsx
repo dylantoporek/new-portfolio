@@ -2,12 +2,12 @@ import styles from '../../styles/rightSide.module.css'
 import { About } from './about/About'
 import { Experience } from './experience/Experience'
 import { Projects } from './Projects/Projects'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import LavaLamp from '../lavaLamp'
 import { useIsMobile } from '../../hooks/useIsMobile'
 
 export const RightSide = () => {
-    const isMobile = useIsMobile();
+    const isMobile = useIsMobile()
 
     const sectionStyle = {
         display: 'flex',
@@ -20,41 +20,56 @@ export const RightSide = () => {
 
     return (
         <div className={styles.right}>
-            <section id='about' aria-labelledby='about-heading' style={sectionStyle}>
+            <section
+                id="about"
+                aria-labelledby="about-heading"
+                style={sectionStyle}
+            >
                 <motion.h2
-                    id='about-heading'
+                    id="about-heading"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    style={headingStyle}>
+                    style={headingStyle}
+                >
                     About
                 </motion.h2>
-                <About/>
+                <About />
             </section>
-            {isMobile ? null : <LavaLamp/>}
+            {isMobile ? null : <LavaLamp />}
 
-            <section id='experience' aria-labelledby='experience-heading' style={sectionStyle}>
+            <section
+                id="experience"
+                aria-labelledby="experience-heading"
+                style={sectionStyle}
+            >
                 <motion.h2
-                    id='experience-heading'
+                    id="experience-heading"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    style={headingStyle}>
+                    style={headingStyle}
+                >
                     Experience
                 </motion.h2>
-                <Experience/>
+                <Experience />
             </section>
-            {isMobile ? null : <LavaLamp/>}
-            <section id='projects' aria-labelledby='projects-heading' style={sectionStyle}>
+            {isMobile ? null : <LavaLamp />}
+            <section
+                id="projects"
+                aria-labelledby="projects-heading"
+                style={sectionStyle}
+            >
                 <motion.h2
-                    id='projects-heading'
+                    id="projects-heading"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    style={headingStyle}>
+                    style={headingStyle}
+                >
                     Projects
                 </motion.h2>
-                <Projects/>
+                <Projects />
             </section>
         </div>
     )

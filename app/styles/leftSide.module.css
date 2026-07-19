@@ -1,4 +1,4 @@
-.left{
+.left {
     display: flex;
     width: 40%;
     padding: 20px;
@@ -26,23 +26,23 @@
     flex-direction: column;
 }
 
-.title{
+.title {
     font-weight: 300;
-    font-size: 20px
+    font-size: 20px;
 }
 
-.nav_elements{
+.nav_elements {
     display: flex;
     flex-direction: column;
     gap: 15px;
     margin-bottom: 20px;
 }
 
-.nav_element{
+.nav_element {
     display: flex;
     gap: 15px;
     align-items: center;
-    color: #4B88A2;
+    color: #4b88a2;
     font-size: 16px;
     max-width: 40%;
     background: none;
@@ -52,7 +52,7 @@
     font-weight: inherit;
     text-align: left;
 
-    &:hover{
+    &:hover {
         color: white;
     }
 }
@@ -62,7 +62,7 @@
     height: 2px;
 }
 
-.socials{
+.socials {
     display: flex;
     flex-direction: row;
     padding: 0px;

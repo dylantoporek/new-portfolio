@@ -25,14 +25,14 @@ npm run dev        # http://localhost:3000
 
 ## Scripts
 
-| Command                | What it does                            |
-| ---------------------- | --------------------------------------- |
-| `npm run dev`          | Start the dev server                    |
-| `npm run build`        | Production build                        |
-| `npm run lint`         | ESLint (next/core-web-vitals + TS)      |
-| `npm run typecheck`    | TypeScript, no emit                     |
-| `npm run format`       | Prettier write                          |
-| `npm test`             | Playwright smoke tests (starts its own dev server) |
+| Command             | What it does                                       |
+| ------------------- | -------------------------------------------------- |
+| `npm run dev`       | Start the dev server                               |
+| `npm run build`     | Production build                                   |
+| `npm run lint`      | ESLint (next/core-web-vitals + TS)                 |
+| `npm run typecheck` | TypeScript, no emit                                |
+| `npm run format`    | Prettier write                                     |
+| `npm test`          | Playwright smoke tests (starts its own dev server) |
 
 ## Structure
 

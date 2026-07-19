@@ -19,7 +19,9 @@ test('experience accordion expands and collapses', async ({ page }) => {
     await expect(firstJob).toHaveAttribute('aria-expanded', 'false')
     await firstJob.click()
     await expect(firstJob).toHaveAttribute('aria-expanded', 'true')
-    await expect(page.getByText('Assisted real estate professionals').first()).toBeVisible()
+    await expect(
+        page.getByText('Assisted real estate professionals').first()
+    ).toBeVisible()
 
     await firstJob.click()
     await expect(firstJob).toHaveAttribute('aria-expanded', 'false')

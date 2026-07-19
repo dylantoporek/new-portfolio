@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
-const MOBILE_BREAKPOINT = 768;
+const MOBILE_BREAKPOINT = 768
 
 export const useIsMobile = () => {
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
         const checkScreenSize = () => {
-            setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-        };
+            setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+        }
 
-        checkScreenSize();
-        window.addEventListener("resize", checkScreenSize);
+        checkScreenSize()
+        window.addEventListener('resize', checkScreenSize)
 
-        return () => window.removeEventListener("resize", checkScreenSize);
-    }, []);
+        return () => window.removeEventListener('resize', checkScreenSize)
+    }, [])
 
-    return isMobile;
-};
+    return isMobile
+}
