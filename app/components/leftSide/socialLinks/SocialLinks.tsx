@@ -46,8 +46,8 @@ export const SocialLinks = () => {
             className={styles.socials}
             style={{
                 display: 'flex',
-                flexDirection: isMobile ? 'column' : 'row',
-                gap: isMobile ? 30 : '10%',
+                flexDirection: 'row',
+                gap: isMobile ? 32 : '10%',
             }}
         >
             {contactMethods.map((method) => {

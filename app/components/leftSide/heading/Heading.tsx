@@ -28,26 +28,26 @@ export const Heading = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    borderBottom: '1px solid white',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.35)',
+                    padding: '14px 0',
                 }}
             >
-                <motion.div whileHover={{ scale: 1.1, y: -2 }}>
+                <motion.div whileHover={{ scale: 1.05, y: -2 }}>
                     <button
                         type="button"
                         onClick={scrollToTop}
                         aria-label="Scroll to top"
                         style={{
-                            fontSize: isMobile ? 32 : 48,
+                            fontSize: 26,
                             fontWeight: 600,
                             cursor: 'pointer',
-                            marginLeft: '30px',
+                            marginLeft: '20px',
                             background: 'none',
                             border: 'none',
                             color: 'inherit',
                             fontFamily: 'inherit',
                             padding: 0,
-                            marginTop: '1em',
-                            marginBottom: '1em',
                         }}
                     >
                         Dylan Toporek
