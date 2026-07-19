@@ -36,6 +36,29 @@ test('section navigation scrolls the page', async ({ page }) => {
     expect(scrollY).toBeGreaterThan(0)
 })
 
+test.describe('mobile viewport', () => {
+    test.use({ viewport: { width: 390, height: 844 } })
+
+    test('menu navigation lands sections below the fixed header', async ({
+        page,
+    }) => {
+        await page.goto('/')
+
+        await page.getByRole('button', { name: 'Open navigation menu' }).click()
+        await page.getByRole('button', { name: 'Experience' }).click()
+        await page.waitForTimeout(1500) // menu close + smooth scroll
+
+        const sectionTop = await page.evaluate(
+            () =>
+                document.getElementById('experience')!.getBoundingClientRect()
+                    .top
+        )
+        // Fixed header is ~73px tall; scroll-margin-top places sections at 84px
+        expect(sectionTop).toBeGreaterThan(73)
+        expect(sectionTop).toBeLessThan(150)
+    })
+})
+
 test('unknown routes show the custom 404 page', async ({ page }) => {
     await page.goto('/this-page-does-not-exist')
 

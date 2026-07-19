@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SocialLinks } from './leftSide/socialLinks/SocialLinks'
 const navItems = [
@@ -11,41 +11,42 @@ const navItems = [
 const SideMenu = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [activeSection, setActiveSection] = useState('about')
+    // Section to scroll to once the menu closes — scrolling can't happen
+    // while the body scroll lock is still active
+    const pendingSection = useRef<string | null>(null)
 
     // Toggle Menu
     const toggleMenu = () => setIsOpen(!isOpen)
 
-    // Lock body scroll while the menu is open
+    // Lock body scroll while the menu is open, and perform any deferred
+    // section scroll once the lock is released
     useEffect(() => {
         document.body.style.overflow = isOpen ? 'hidden' : ''
+
+        if (!isOpen && pendingSection.current) {
+            const section = pendingSection.current
+            pendingSection.current = null
+
+            // "About" is the first section, so go to the very top;
+            // the others land per the sections' scroll-margin-top
+            if (section === 'about') {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+            } else {
+                document
+                    .getElementById(section)
+                    ?.scrollIntoView({ behavior: 'smooth' })
+            }
+        }
+
         return () => {
             document.body.style.overflow = ''
         }
     }, [isOpen])
 
-    // Handle scrolling to section
+    // Close the menu and scroll to the section once the lock releases
     const handleScroll = (section: string) => {
+        pendingSection.current = section
         setIsOpen(false)
-
-        // Get the section element
-        const el = document.getElementById(section)
-        if (!el) return
-
-        // Calculate the position of the element and its height
-        const elementPosition =
-            el.getBoundingClientRect().top + window.pageYOffset
-        const elementHeight = el.offsetHeight
-
-        // Calculate the center of the viewport and the element
-        const windowHeight = window.innerHeight
-        const centerPosition =
-            elementPosition - windowHeight / 4 + elementHeight / 2
-
-        // Scroll to the section and center it
-        window.scrollTo({
-            top: centerPosition,
-            behavior: 'smooth', // Smooth scroll effect
-        })
     }
 
     // Detect active section while scrolling

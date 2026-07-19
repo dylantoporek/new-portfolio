@@ -47,26 +47,13 @@ export const NavElements = () => {
     const handleScroll = (section: string) => {
         setActiveSection(section)
 
+        // "About" is the first section, so go to the very top of the page;
+        // the others land per the sections' scroll-margin-top
         if (section === 'about') {
             window.scrollTo({ top: 0, behavior: 'smooth' })
+            return
         }
-        // Get the section element
-        const el = document.getElementById(section)
-        if (!el) return
-
-        // Calculate the position of the element
-        const elementPosition =
-            el.getBoundingClientRect().top + window.pageYOffset
-
-        // Calculate the center of the viewport and the element
-        const windowHeight = window.innerHeight
-        const centerPosition = elementPosition - windowHeight / 5.5
-
-        // Scroll to the section and center it
-        window.scrollTo({
-            top: centerPosition,
-            behavior: 'smooth', // Smooth scroll effect
-        })
+        document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' })
     }
 
     return isMobile ? null : (
@@ -92,6 +79,12 @@ export const NavElements = () => {
                     }
                     style={{
                         cursor: 'pointer',
+                        // Same active treatment as the mobile menu:
+                        // coral text on a soft highlight pill
+                        background:
+                            activeSection === section
+                                ? 'rgba(255, 255, 255, 0.08)'
+                                : 'none',
                         color:
                             activeSection === section || target === section
                                 ? '#FF6F61'

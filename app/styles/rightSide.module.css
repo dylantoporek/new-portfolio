@@ -11,6 +11,12 @@
     gap: 80px;
 }
 
+/* Landing offset for nav scroll: keeps section headings comfortably below
+   the top of the viewport (and clear of the fixed header on mobile) */
+.right section {
+    scroll-margin-top: 18vh;
+}
+
 /* Mobile styles */
 @media (max-width: 767px) {
     .right {
@@ -19,6 +25,10 @@
         padding: 20px;
         margin-left: 0;
         height: unset;
+    }
+
+    .right section {
+        scroll-margin-top: 84px;
     }
 }
 
