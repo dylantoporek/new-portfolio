@@ -77,8 +77,14 @@ const LavaLamp = () => {
                     x2="0"
                     y2="280"
                 >
-                    <stop offset="0%" stopColor="#AAB2C6" />
-                    <stop offset="100%" stopColor="#223349" />
+                    <stop
+                        offset="0%"
+                        style={{ stopColor: 'var(--lava-top)' }}
+                    />
+                    <stop
+                        offset="100%"
+                        style={{ stopColor: 'var(--lava-bottom)' }}
+                    />
                 </linearGradient>
 
                 {/* Gooey filter so blobs merge into each other and the pool */}

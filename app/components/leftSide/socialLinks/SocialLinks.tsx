@@ -37,9 +37,9 @@ export const SocialLinks = () => {
 
     function handleColor(method: string) {
         if (isHovered === method) {
-            return '#FF6F61'
+            return 'var(--accent)'
         }
-        return '#4B88A2'
+        return 'var(--muted)'
     }
     return (
         <div

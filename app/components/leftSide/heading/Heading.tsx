@@ -1,6 +1,7 @@
 'use client'
 import styles from '../../../styles/leftSide.module.css'
 import SideMenu from '../../sideMenu'
+import { ThemeToggle } from '../../themeToggle'
 import { motion } from 'framer-motion'
 import { useIsMobile } from '../../../hooks/useIsMobile'
 
@@ -19,7 +20,7 @@ export const Heading = () => {
         <div>
             <div
                 style={{
-                    backgroundColor: '#0D1B2A',
+                    backgroundColor: 'var(--bg)',
                     zIndex: 10,
                     width: '100%',
                     position: 'fixed',
@@ -28,9 +29,10 @@ export const Heading = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.35)',
+                    borderBottom: '1px solid var(--border)',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',
                     padding: '14px 0',
+                    transition: 'background-color 0.3s ease',
                 }}
             >
                 <motion.div whileHover={{ scale: 1.05, y: -2 }}>
@@ -54,7 +56,10 @@ export const Heading = () => {
                     </button>
                 </motion.div>
 
-                <SideMenu />
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <ThemeToggle />
+                    <SideMenu />
+                </div>
             </div>
         </div>
     ) : (

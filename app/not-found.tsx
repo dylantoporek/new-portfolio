@@ -19,7 +19,7 @@ export default function NotFound() {
                     fontSize: 96,
                     fontWeight: 600,
                     margin: 0,
-                    color: '#AAB2C6',
+                    color: 'var(--heading-muted)',
                 }}
             >
                 404
@@ -33,8 +33,8 @@ export default function NotFound() {
                     marginTop: '16px',
                     padding: '10px 24px',
                     borderRadius: '16px',
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    color: '#FF6F61',
+                    background: 'var(--surface)',
+                    color: 'var(--accent)',
                     fontSize: 18,
                 }}
             >
