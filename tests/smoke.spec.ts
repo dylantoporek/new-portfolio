@@ -27,13 +27,47 @@ test('experience accordion expands and collapses', async ({ page }) => {
     await expect(firstJob).toHaveAttribute('aria-expanded', 'false')
 })
 
-test('section navigation scrolls the page', async ({ page }) => {
+test('section navigation lands headers at the top and swaps the highlight', async ({
+    page,
+}) => {
     await page.goto('/')
 
-    await page.getByRole('button', { name: 'Projects' }).click()
-    await page.waitForTimeout(1000) // allow smooth scroll to finish
-    const scrollY = await page.evaluate(() => window.scrollY)
-    expect(scrollY).toBeGreaterThan(0)
+    const projectsButton = page.getByRole('button', { name: 'Projects' })
+    await projectsButton.click()
+    await page.waitForTimeout(1200) // allow smooth scroll to finish
+
+    // Section header aligned near the top of the viewport
+    const sectionTop = await page.evaluate(
+        () => document.getElementById('projects')!.getBoundingClientRect().top
+    )
+    expect(sectionTop).toBeGreaterThan(-5)
+    expect(sectionTop).toBeLessThan(120)
+
+    // Highlight follows the scroll position
+    await expect(projectsButton).toHaveAttribute('aria-current', 'true')
+    await expect(
+        page.getByRole('button', { name: 'Experience' })
+    ).not.toHaveAttribute('aria-current', 'true')
+})
+
+test('theme toggle switches and persists across reloads', async ({ page }) => {
+    await page.goto('/')
+
+    const initial = await page.evaluate(
+        () => document.documentElement.dataset.theme
+    )
+    expect(['dark', 'light']).toContain(initial)
+
+    const other = initial === 'dark' ? 'light' : 'dark'
+    await page.getByRole('button', { name: `Switch to ${other} theme` }).click()
+    await expect
+        .poll(() => page.evaluate(() => document.documentElement.dataset.theme))
+        .toBe(other)
+
+    await page.reload()
+    await expect
+        .poll(() => page.evaluate(() => document.documentElement.dataset.theme))
+        .toBe(other)
 })
 
 test.describe('mobile viewport', () => {
@@ -56,6 +90,12 @@ test.describe('mobile viewport', () => {
         // Fixed header is ~73px tall; scroll-margin-top places sections at 84px
         expect(sectionTop).toBeGreaterThan(73)
         expect(sectionTop).toBeLessThan(150)
+
+        // Reopen the menu: the highlight should have followed the scroll
+        await page.getByRole('button', { name: 'Open navigation menu' }).click()
+        await expect(
+            page.getByRole('button', { name: 'Experience' })
+        ).toHaveAttribute('aria-current', 'true')
     })
 })
 

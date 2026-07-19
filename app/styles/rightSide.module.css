@@ -11,10 +11,10 @@
     gap: 80px;
 }
 
-/* Landing offset for nav scroll: keeps section headings comfortably below
-   the top of the viewport (and clear of the fixed header on mobile) */
+/* Landing offset for nav scroll: aligns section headings with the top of
+   the viewport (and clear of the fixed header on mobile) */
 .right section {
-    scroll-margin-top: 18vh;
+    scroll-margin-top: 24px;
 }
 
 /* Mobile styles */
@@ -42,6 +42,18 @@
     gap: 10px;
 }
 
+.job_card {
+    background: var(--surface);
+    padding: 8px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.job_card:hover {
+    background: var(--surface-hover);
+}
+
 .job_dates {
     min-width: 120px;
 }
@@ -60,7 +72,7 @@
 
 .skill {
     border-radius: 1em;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--surface);
     padding: 10px;
     font-size: 14px;
     width: fit-content;

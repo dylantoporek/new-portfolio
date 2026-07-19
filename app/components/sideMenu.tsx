@@ -2,15 +2,16 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SocialLinks } from './leftSide/socialLinks/SocialLinks'
-const navItems = [
-    { id: 'about', label: 'About' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-]
+import { SECTIONS, useActiveSection } from '../hooks/useActiveSection'
+
+const navItems = SECTIONS.map((id) => ({
+    id,
+    label: id.charAt(0).toUpperCase() + id.slice(1),
+}))
 
 const SideMenu = () => {
     const [isOpen, setIsOpen] = useState(false)
-    const [activeSection, setActiveSection] = useState('about')
+    const activeSection = useActiveSection()
     // Section to scroll to once the menu closes — scrolling can't happen
     // while the body scroll lock is still active
     const pendingSection = useRef<string | null>(null)
@@ -49,26 +50,6 @@ const SideMenu = () => {
         setIsOpen(false)
     }
 
-    // Detect active section while scrolling
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveSection(entry.target.id)
-                    }
-                })
-            },
-            { threshold: 0.5 }
-        )
-
-        document
-            .querySelectorAll('section')
-            .forEach((section) => observer.observe(section))
-
-        return () => observer.disconnect()
-    }, [])
-
     return (
         <div
             style={{
@@ -87,13 +68,14 @@ const SideMenu = () => {
                         cursor: 'pointer',
                         padding: '8px',
                         display: 'flex',
+                        color: 'var(--text)',
                     }}
                 >
                     <svg
                         width="28"
                         height="28"
                         viewBox="0 0 24 24"
-                        stroke="white"
+                        stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
                         aria-hidden="true"
@@ -118,7 +100,7 @@ const SideMenu = () => {
                             style={{
                                 position: 'fixed',
                                 inset: 0,
-                                backgroundColor: 'rgba(4, 10, 18, 0.6)',
+                                backgroundColor: 'var(--backdrop)',
                                 backdropFilter: 'blur(2px)',
                                 zIndex: 39,
                             }}
@@ -145,11 +127,10 @@ const SideMenu = () => {
                                 height: '100%',
                                 width: 'min(280px, 80vw)',
                                 padding: '16px 24px 32px',
-                                backgroundColor: '#132435',
-                                borderLeft:
-                                    '1px solid rgba(255, 255, 255, 0.1)',
-                                boxShadow: '-16px 0 40px rgba(0, 0, 0, 0.5)',
-                                color: '#F5F5F4',
+                                backgroundColor: 'var(--panel-bg)',
+                                borderLeft: '1px solid var(--border)',
+                                boxShadow: '-16px 0 40px rgba(0, 0, 0, 0.3)',
+                                color: 'var(--text)',
                                 display: 'flex',
                                 flexDirection: 'column',
                             }}
@@ -161,7 +142,7 @@ const SideMenu = () => {
                                     alignSelf: 'flex-end',
                                     background: 'transparent',
                                     border: 'none',
-                                    color: '#AAB2C6',
+                                    color: 'var(--heading-muted)',
                                     cursor: 'pointer',
                                     fontSize: '24px',
                                     padding: '8px',
@@ -198,15 +179,15 @@ const SideMenu = () => {
                                             borderRadius: '12px',
                                             background:
                                                 activeSection === id
-                                                    ? 'rgba(255, 255, 255, 0.08)'
+                                                    ? 'var(--surface)'
                                                     : 'none',
                                             border: 'none',
                                             fontFamily: 'inherit',
                                             fontWeight: 300,
                                             color:
                                                 activeSection === id
-                                                    ? '#FF6F61'
-                                                    : '#F5F5F4',
+                                                    ? 'var(--accent)'
+                                                    : 'var(--text)',
                                             transition:
                                                 'color 0.2s ease, background 0.2s ease',
                                         }}
@@ -220,8 +201,7 @@ const SideMenu = () => {
                                 style={{
                                     marginTop: 'auto',
                                     paddingTop: '24px',
-                                    borderTop:
-                                        '1px solid rgba(255, 255, 255, 0.1)',
+                                    borderTop: '1px solid var(--border)',
                                     display: 'flex',
                                     justifyContent: 'center',
                                 }}
