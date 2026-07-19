@@ -1,5 +1,6 @@
 'use client'
 import {motion} from 'framer-motion'
+import Image from 'next/image'
 import styles from '../../../styles/rightSide.module.css'
 import { useIsMobile } from '../../../hooks/useIsMobile'
 
@@ -49,21 +50,22 @@ export const Project = ({ project }: Props) => {
                 <a
                     href={project.url}
                     target="_blank"
+                    rel="noopener noreferrer"
                     style={{
-                        display: 'flex',
+                        display: 'block',
+                        position: 'relative',
                         width: '100%',
                         height: '100%',
-                        justifyContent: 'center',
-                        alignItems: 'center',
                     }}>
-                    <img
-                    alt={project.title}
-                    style={{
-                        maxWidth: "100%",
-                        maxHeight: "100%",
-                        objectFit: "contain", // Ensures no stretching or cropping
-                        borderRadius: '8px',
-                    }} src={project.image}/>
+                    <Image
+                        alt={project.title}
+                        src={project.image}
+                        fill
+                        sizes="250px"
+                        style={{
+                            objectFit: "contain", // Ensures no stretching or cropping
+                            borderRadius: '8px',
+                        }}/>
                 </a>
             </div>
             <div

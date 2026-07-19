@@ -76,15 +76,16 @@ const SideMenu = () => {
       {!isOpen && (
         <motion.div
           whileHover={{ y: -2, scale: 1.1 }}>
-          <button onClick={toggleMenu} style={{
-          //   position: "fixed",
-            top: 30,
-            right: 0,
-            background: 'transparent',
-            border: 'none',
-            cursor: 'pointer'
-          }}>
-            <svg width="32" height="32" viewBox="0 0 24 24" stroke="white" strokeWidth="2" strokeLinecap="round">
+          <button
+            onClick={toggleMenu}
+            aria-label="Open navigation menu"
+            aria-expanded={isOpen}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              cursor: 'pointer'
+            }}>
+            <svg width="32" height="32" viewBox="0 0 24 24" stroke="white" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <line x1="3" y1="6" x2="21" y2="6" />
               <line x1="3" y1="12" x2="21" y2="12" />
               <line x1="3" y1="18" x2="21" y2="18" />
@@ -122,7 +123,9 @@ const SideMenu = () => {
            alignSelf: 'end',
            marginTop: '10px',
          }}>
-          <button onClick={toggleMenu} 
+          <button
+            onClick={toggleMenu}
+            aria-label="Close navigation menu"
             style={{
               background: 'transparent',
               border: 'none',
@@ -142,27 +145,34 @@ const SideMenu = () => {
             alignItems: 'center',
             justifyContent: "space-between",
           }}>
-          <nav style={{
+          <nav
+          aria-label="Section navigation"
+          style={{
             display: 'flex',
-            flexDirection: 'column', 
+            flexDirection: 'column',
             alignItems: 'center',
             gap: 30 // Adjust space between links
         }}>
           {navItems.map(({ id, label }) => (
-            <motion.div
+            <motion.button
               key={id}
+              type="button"
               onClick={() => handleScroll(id)}
               whileHover={{ y: -2, scale: 1.1 }}
+              aria-current={activeSection === id ? 'true' : undefined}
               style={{
                 cursor: 'pointer',
                 fontSize: '18px',
                 padding: '8px',
+                background: 'none',
+                border: 'none',
+                fontFamily: 'inherit',
                 color: activeSection === id ? '#FF6F61' : 'black',
                 transition: 'color 0.2s ease'
               }}
             >
               {label}
-            </motion.div>
+            </motion.button>
           ))}
         </nav>
         <SocialLinks/>

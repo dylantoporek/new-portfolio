@@ -1,6 +1,6 @@
 'use client'
 import styles from '../../../styles/rightSide.module.css'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import PlusMinus from '../../plusMinus'
 import { useIsMobile } from '../../../hooks/useIsMobile'
@@ -24,21 +24,32 @@ export const Job = ({ job }: Props) => {
 
     const toggleSection = () => setOpenSection(prev => !prev);
     const isMobile = useIsMobile();
+    const contentId = useId();
 
     return (
         <div>
-            <div 
+            <div
                 className={styles.job_details}
                 style={{
                     fontSize: isMobile ? 16:18
                 }}>
-                <div
+                <button
+                type="button"
                 onClick={toggleSection}
+                aria-expanded={openSection}
+                aria-controls={contentId}
                 style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     cursor: 'pointer',
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    width: '100%',
+                    color: 'inherit',
+                    font: 'inherit',
+                    textAlign: 'left',
                 }}>
                     <div 
                         style={{
@@ -55,15 +66,17 @@ export const Job = ({ job }: Props) => {
                         
                     </div>
                     <div
+                    aria-hidden="true"
                     style={{
                         marginRight: 20
                     }}>
                         <PlusMinus isOpen={openSection}/>
                     </div>
-                </div>
+                </button>
                 <AnimatePresence>
                     {openSection && (
                         <motion.div
+                            id={contentId}
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}

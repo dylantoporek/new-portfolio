@@ -32,17 +32,25 @@ export const Heading = () => {
             }}>
                 <motion.div
                 whileHover={{ scale: 1.1, y: -2 }}>
-                    <p
+                    <button
+                    type="button"
                     onClick={scrollToTop}
+                    aria-label="Scroll to top"
                     style={{
                         fontSize: isMobile ? 32 : 48,
                         fontWeight: 600,
                         cursor: 'pointer',
-                        marginLeft: '30px'
-
+                        marginLeft: '30px',
+                        background: 'none',
+                        border: 'none',
+                        color: 'inherit',
+                        fontFamily: 'inherit',
+                        padding: 0,
+                        marginTop: '1em',
+                        marginBottom: '1em',
                     }}>
                         Dylan Toporek
-                    </p>
+                    </button>
                 </motion.div>
                
                 <SideMenu/>

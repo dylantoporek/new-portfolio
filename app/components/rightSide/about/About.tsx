@@ -30,7 +30,7 @@ export const About = () => {
             transition={{ duration: 0.6 }}
             >
 <p>
-                        My interest in software engineering has always been there. Only recently, however, have I been able to pursue that interest. Flatiron School's software engineering program gave me the foundation I needed to begin my journey as a developer. During the course, I found satisfaction in learning how to build webpages from scratch, systematically resolving errors in my code, and being able utilize all aspects of creativity to shape my personal projects. 
+                        My interest in software engineering has always been there. Only recently, however, have I been able to pursue that interest. Flatiron School&apos;s software engineering program gave me the foundation I needed to begin my journey as a developer. During the course, I found satisfaction in learning how to build webpages from scratch, systematically resolving errors in my code, and being able utilize all aspects of creativity to shape my personal projects. 
                     </p>
             </motion.div>
             <motion.div   

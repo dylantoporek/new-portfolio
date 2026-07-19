@@ -5,12 +5,12 @@ import { useState, useEffect } from 'react';
 import {motion} from 'framer-motion'
 import { useIsMobile } from '../../../hooks/useIsMobile'
 
+const sections = ["about", "experience", "projects"];
+
 export const NavElements = () => {
-const [hover, setHover] = useState(false)
 const [target, setTarget] = useState('')
 const [activeSection, setActiveSection] = useState("");
 
-const sections = ["about", "experience", "projects"];
 const isMobile = useIsMobile();
 
     useEffect(() => {
@@ -50,9 +50,8 @@ const handleScroll = (section: string) => {
   const el = document.getElementById(section);
   if (!el) return;
 
-  // Calculate the position of the element and its height
+  // Calculate the position of the element
   const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-  const elementHeight = el.offsetHeight;
 
   // Calculate the center of the viewport and the element
   const windowHeight = window.innerHeight;
@@ -68,10 +67,11 @@ const handleScroll = (section: string) => {
     return isMobile ? (
         null
     ) : (
-        <motion.div className={styles.nav_elements}>
+        <nav className={styles.nav_elements} aria-label="Section navigation">
         {sections.map((section) => (
-        <motion.div
+        <motion.button
           key={section}
+          type="button"
           className={styles.nav_element}
           onMouseEnter={() => {
           setTarget(section)
@@ -79,18 +79,21 @@ const handleScroll = (section: string) => {
           onMouseLeave={() => {
             setTarget('')
           }}
+          onFocus={() => setTarget(section)}
+          onBlur={() => setTarget('')}
           whileHover={{ scale: 1.1, y: -2 }}
           transition={{ type: "spring", stiffness: 200 }}
           onClick={() => handleScroll(section)}
+          aria-current={activeSection === section ? 'true' : undefined}
           style={{
             cursor: "pointer",
             color: activeSection === section || target === section ? "#FF6F61" : "#fff", // Highlight active section
           }}
         >
-          <Line isHovered={hover && target === section} />
-          <a>{section.charAt(0).toUpperCase() + section.slice(1)}</a>
-        </motion.div>
+          <Line isHovered={target === section} />
+          <span>{section.charAt(0).toUpperCase() + section.slice(1)}</span>
+        </motion.button>
       ))}
-        </motion.div>
+        </nav>
     )
 }

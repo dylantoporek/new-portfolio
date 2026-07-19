@@ -1,6 +1,6 @@
 'use client'
 import { useId } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 interface Blob {
     cx: number;
@@ -33,6 +33,9 @@ const LavaLamp = () => {
     const id = useId()
     const gradientId = `lava-gradient-${id}`
     const gooId = `lava-goo-${id}`
+    // MotionConfig's reducedMotion setting doesn't cover SVG attribute
+    // animations (cx/cy/r), so this component checks the preference itself
+    const reduceMotion = useReducedMotion()
 
     return (
         <svg
@@ -75,9 +78,9 @@ const LavaLamp = () => {
                     <motion.circle
                         key={i}
                         cx={blob.cx}
-                        cy={blob.cy}
+                        cy={reduceMotion ? blob.cy - blob.rise * 0.5 : blob.cy}
                         r={blob.r}
-                        animate={{
+                        animate={reduceMotion ? undefined : {
                             cy: [blob.cy, blob.cy - blob.rise, blob.cy],
                             cx: [blob.cx, blob.cx + blob.drift, blob.cx],
                             r: [blob.r, blob.r * 0.85, blob.r],

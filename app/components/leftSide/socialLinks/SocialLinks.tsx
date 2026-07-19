@@ -15,7 +15,7 @@ export const SocialLinks = () => {
     const [isHovered, setIsHovered] = useState('')
     const contactMethods = ['github', 'linkedin', 'medium']
 
-    function iconPicker(string: String){
+    function iconPicker(string: string){
         if (string === 'github'){
           return faGithub
         } else if (string === 'linkedin'){
@@ -25,7 +25,7 @@ export const SocialLinks = () => {
         }
       }
 
-      function link(string: String){
+      function link(string: string){
         if (string === 'github'){
           return "https://github.com/dylantoporek"
         } else if (string === 'linkedin'){
@@ -59,7 +59,12 @@ export const SocialLinks = () => {
               justifyItems:'center',
 
             }}>
-              <a href={link(method)} style={{display: "table-cell"}} target="_blank">
+              <a
+                href={link(method)}
+                style={{display: "table-cell"}}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${method.charAt(0).toUpperCase() + method.slice(1)} profile (opens in new tab)`}>
                 <FontAwesomeIcon
                 onMouseOver={() => setIsHovered(method)}
                 onMouseOut={() => setIsHovered('')}
