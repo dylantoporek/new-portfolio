@@ -11,6 +11,7 @@ export const Projects = () => {
             title: "Del's",
             text: 'Website for an up and coming speakeasy in New York City',
             image: '/del.jpeg',
+            url: 'https://dels-9hki.vercel.app/',
             id: 'del',
             skills: ['NextJS', 'Tailwind CSS', 'TypeScript'],
         },
@@ -26,6 +27,7 @@ export const Projects = () => {
             title: 'Breath of the Wild Cooking App',
             text: 'Cooking mini-game with an in-game shop. Buy ingredients and cook them!',
             image: '/botw.jpeg',
+            url: 'https://botw-recipe-app.vercel.app/',
             frontend: 'https://github.com/dylantoporek/botw-recipe-app',
             backend: 'https://github.com/dylantoporek/botw-recipe-app-backend',
             id: 'botw',
@@ -41,6 +43,7 @@ export const Projects = () => {
             title: 'Pokemon Minigame App',
             text: 'Collection of Pokemon themed mini-games. Race on the track or battle in the arena!',
             image: '/pokemon.jpeg',
+            url: 'https://pokemon-minigame-project.vercel.app/',
             frontend:
                 'https://github.com/dylantoporek/pokemon-mini-game-project',
             backend: 'https://github.com/dylantoporek/pokemon-minigame-backend',
