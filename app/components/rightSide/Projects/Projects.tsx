@@ -8,6 +8,14 @@ export const Projects = () => {
 
     const projects: ProjectDetails[] = [
         {
+            title: 'Cinema Shirts',
+            text: 'Online shop for movie-inspired t-shirts',
+            image: '/cinemashirts.png',
+            url: 'https://www.cinemashirts.com/',
+            id: 'cinema-shirts',
+            skills: [],
+        },
+        {
             title: "Del's",
             text: 'Website for an up and coming speakeasy in New York City',
             image: '/del.jpeg',
@@ -31,6 +39,22 @@ export const Projects = () => {
             frontend: 'https://github.com/dylantoporek/botw-recipe-app',
             backend: 'https://github.com/dylantoporek/botw-recipe-app-backend',
             id: 'botw',
+            skills: [
+                'React',
+                'Ruby on Rails',
+                'CSS',
+                'Chakra UI',
+                'JavaScript',
+            ],
+        },
+        {
+            title: 'Nintendo-Land',
+            text: 'A board game where you race to the finish against three computer opponents.',
+            image: '/nintendo-land.webp',
+            url: 'https://board-game-backend-alpha.vercel.app/',
+            frontend: 'https://github.com/dylantoporek/Nintendo-Land',
+            backend: 'https://github.com/dylantoporek/Board-Game-Backend',
+            id: 'board-game',
             skills: [
                 'React',
                 'Ruby on Rails',
