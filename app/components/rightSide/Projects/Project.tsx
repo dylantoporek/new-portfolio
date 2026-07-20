@@ -105,34 +105,36 @@ export const Project = ({ project }: Props) => {
                             {project.text}
                         </p>
                     </div>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            fontSize: isMobile ? '16px' : '18px',
-                        }}
-                    >
-                        <p style={{ margin: 0, fontWeight: '500' }}>
-                            Made With:
-                        </p>
+                    {project.skills.length > 0 && (
                         <div
                             style={{
                                 display: 'flex',
-                                flexDirection: 'row',
-                                gap: isMobile ? 5 : 10,
-                                flexWrap: 'wrap',
-                                minWidth: 0,
+                                flexDirection: 'column',
+                                fontSize: isMobile ? '16px' : '18px',
                             }}
                         >
-                            {project.skills.map(
-                                (skill: string, index: number) => (
-                                    <p key={index} className={styles.skill}>
-                                        {skill}
-                                    </p>
-                                )
-                            )}
+                            <p style={{ margin: 0, fontWeight: '500' }}>
+                                Made With:
+                            </p>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    gap: isMobile ? 5 : 10,
+                                    flexWrap: 'wrap',
+                                    minWidth: 0,
+                                }}
+                            >
+                                {project.skills.map(
+                                    (skill: string, index: number) => (
+                                        <p key={index} className={styles.skill}>
+                                            {skill}
+                                        </p>
+                                    )
+                                )}
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </>
