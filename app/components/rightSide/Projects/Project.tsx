@@ -1,5 +1,4 @@
 'use client'
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 import styles from '../../../styles/rightSide.module.css'
 import { useIsMobile } from '../../../hooks/useIsMobile'
@@ -22,17 +21,17 @@ interface Props {
 export const Project = ({ project }: Props) => {
     const isMobile = useIsMobile()
 
-    return (
-        <motion.div
-            style={{
-                display: 'flex',
-                flexDirection: isMobile ? 'column-reverse' : 'row',
-                alignItems: 'center',
-                gap: isMobile ? 0 : 50,
-                padding: '8px',
-                height: isMobile ? 'unset' : '250px',
-            }}
-        >
+    const tileStyle = {
+        display: 'flex',
+        flexDirection: isMobile ? 'column-reverse' : 'row',
+        alignItems: 'center',
+        gap: isMobile ? 0 : 50,
+        padding: '8px',
+        height: isMobile ? 'unset' : '250px',
+    } as const
+
+    const tileContent = (
+        <>
             <div
                 style={{
                     width: '100%',
@@ -48,12 +47,8 @@ export const Project = ({ project }: Props) => {
                     flexShrink: 0,
                 }}
             >
-                <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <div
                     style={{
-                        display: 'block',
                         position: 'relative',
                         width: '100%',
                         height: '100%',
@@ -69,7 +64,7 @@ export const Project = ({ project }: Props) => {
                             borderRadius: '8px',
                         }}
                     />
-                </a>
+                </div>
             </div>
             <div
                 style={{
@@ -140,6 +135,21 @@ export const Project = ({ project }: Props) => {
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </>
+    )
+
+    // The whole tile is a link to the live project when a URL exists
+    return project.url ? (
+        <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${project.title} (opens in new tab)`}
+            style={{ ...tileStyle, cursor: 'pointer' }}
+        >
+            {tileContent}
+        </a>
+    ) : (
+        <div style={tileStyle}>{tileContent}</div>
     )
 }
