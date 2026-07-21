@@ -13,7 +13,7 @@ export const Projects = () => {
             image: '/cinemashirts.png',
             url: 'https://www.cinemashirts.com/',
             id: 'cinema-shirts',
-            skills: [],
+            skills: ['NextJS', 'React', 'TypeScript', 'Tailwind CSS', 'Stripe'],
         },
         {
             title: "Del's",
