@@ -21,7 +21,7 @@ export const Projects = () => {
             image: '/del.jpeg',
             url: 'https://dels-9hki.vercel.app/',
             id: 'del',
-            skills: ['NextJS', 'Tailwind CSS', 'TypeScript'],
+            skills: ['NextJS', 'React', 'TypeScript', 'Tailwind CSS'],
         },
         {
             title: 'Portfolio Version 1',
@@ -41,10 +41,11 @@ export const Projects = () => {
             id: 'botw',
             skills: [
                 'React',
-                'Ruby on Rails',
-                'CSS',
-                'Chakra UI',
                 'JavaScript',
+                'Chakra UI',
+                'Node.js',
+                'Express',
+                'PostgreSQL',
             ],
         },
         {
@@ -57,10 +58,12 @@ export const Projects = () => {
             id: 'board-game',
             skills: [
                 'React',
-                'Ruby on Rails',
-                'CSS',
-                'Chakra UI',
                 'JavaScript',
+                'Bootstrap',
+                'Sass',
+                'Node.js',
+                'Express',
+                'PostgreSQL',
             ],
         },
         {
@@ -72,7 +75,14 @@ export const Projects = () => {
                 'https://github.com/dylantoporek/pokemon-mini-game-project',
             backend: 'https://github.com/dylantoporek/pokemon-minigame-backend',
             id: 'poke',
-            skills: ['React', 'Ruby on Rails', 'CSS', 'JavaScript'],
+            skills: [
+                'React',
+                'JavaScript',
+                'CSS',
+                'Node.js',
+                'Express',
+                'PostgreSQL',
+            ],
         },
     ]
 
