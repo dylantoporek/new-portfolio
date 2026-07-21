@@ -49,9 +49,9 @@ export const Projects = () => {
             ],
         },
         {
-            title: 'Nintendo-Land',
+            title: 'Castle Dash',
             text: 'A board game where you race to the finish against three computer opponents.',
-            image: '/nintendo-land.webp',
+            image: '/castle-dash.png',
             url: 'https://board-game-backend-alpha.vercel.app/',
             frontend: 'https://github.com/dylantoporek/Nintendo-Land',
             backend: 'https://github.com/dylantoporek/Board-Game-Backend',
