@@ -16,20 +16,20 @@ export const Projects = () => {
             skills: ['NextJS', 'React', 'TypeScript', 'Tailwind CSS', 'Stripe'],
         },
         {
+            title: "Warden's Gambit",
+            text: 'Chess-inspired fantasy tactics game. Draft a warband, then hunt the enemy Warden across a fog-covered wilderness.',
+            image: '/wardens-gambit.png',
+            url: 'https://wardens-gambit.onrender.com/',
+            id: 'wardens-gambit',
+            skills: ['JavaScript', 'CSS', 'Node.js', 'Express', 'WebSockets'],
+        },
+        {
             title: "Del's",
             text: 'Website for an up and coming speakeasy in New York City',
             image: '/del.jpeg',
             url: 'https://dels-9hki.vercel.app/',
             id: 'del',
             skills: ['NextJS', 'React', 'TypeScript', 'Tailwind CSS'],
-        },
-        {
-            title: 'Portfolio Version 1',
-            text: 'The previous version of my portfolio site',
-            image: '/logo.jpeg',
-            url: 'https://dylantoporek-portfolio-v1.vercel.app/',
-            id: 'portfolio-v-1',
-            skills: ['React', 'CSS', 'Chakra UI', 'JavaScript'],
         },
         {
             title: 'Breath of the Wild Cooking App',
